@@ -119,3 +119,12 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+
+
+
+##########     Other Aliases      ##########
+alias c='clear'
+alias cd..='cd ..'
+alias ..='cd ..'
+
