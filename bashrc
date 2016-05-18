@@ -128,4 +128,6 @@ fi
 alias c='clear'
 alias cd..='cd ..'
 alias ..='cd ..'
-
+alias home='cd ~/..'
+alias main='cd ~'
+alias user='echo $USER'
