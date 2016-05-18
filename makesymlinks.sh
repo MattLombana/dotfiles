@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc viminfo vim_mru_files vim_runtime"    # list of files/folders to symlink in homedir
+files="bashrc vimrc"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -29,3 +29,8 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
+
+
+# install awesome vim (.vimrc)
+git clone git://github.com/amix/vimrc.git ~/.vim_runtime
+sh ~/.vim_runtime/install_awesome_vimrc.sh

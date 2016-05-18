@@ -10,6 +10,7 @@
 # Command Line History (newest to oldest):
 :q!
 :q
+:a
 :wq
 :N
 :n
@@ -25,24 +26,34 @@
 # Input Line History (newest to oldest):
 
 # Registers:
-""-	CHAR	0
-	M
+""1	LINE	0
+	
+"2	LINE	0
+	files="bashrc vimrc viminfo vim_mru_files vim_runtime"    # list of files/folders to symlink in homedir
+"3	LINE	0
+	
+"-	CHAR	0
+	q
 
 # File marks:
-'0  11  18  ~/dotfiles/makesymlinks.sh
-'1  1  5  ~/dotfiles/.git/MERGE_MSG
-'2  31  3  ~/dotfiles/makesymlinks.sh
-'3  129  15  ~/.bashrc
-'4  97  18  ~/.bashrc
-'5  96  16  ~/.bashrc
-'6  2  5  ~/Documents/matt-stuff/VimWorkshop.txt
-'7  9  0  ~/Documents/matt-stuff/VimWorkshop.txt
-'8  1  0  ~/Documents/matt-stuff/VimWorkshop.txt
-'9  129  0  ~/Documents/matt-stuff/Metamorphasis.txt
+'0  36  41  ~/dotfiles/makesymlinks.sh
+'1  11  0  ~/dotfiles/makesymlinks.sh
+'2  98  18  ~/dotfiles/bashrc
+'3  1  0  ~/dotfiles/vimrc
+'4  1  5  ~/dotfiles/.git/MERGE_MSG
+'5  29  3  ~/dotfiles/makesymlinks.sh
+'6  129  15  ~/.bashrc
+'7  97  18  ~/.bashrc
+'8  96  16  ~/.bashrc
+'9  2  5  ~/Documents/matt-stuff/VimWorkshop.txt
 
 # Jumplist (newest first):
--'  11  18  ~/dotfiles/makesymlinks.sh
--'  31  0  ~/dotfiles/makesymlinks.sh
+-'  36  41  ~/dotfiles/makesymlinks.sh
+-'  11  0  ~/dotfiles/makesymlinks.sh
+-'  98  18  ~/dotfiles/bashrc
+-'  1  0  ~/dotfiles/bashrc
+-'  1  0  ~/dotfiles/vimrc
+-'  29  0  ~/dotfiles/makesymlinks.sh
 -'  1  5  ~/dotfiles/.git/MERGE_MSG
 -'  1  0  ~/dotfiles/makesymlinks.sh
 -'  129  15  ~/.bashrc
@@ -135,20 +146,26 @@
 -'  1  0  ~/Documents/matt-stuff/MattLombana-assignments/.git/COMMIT_EDITMSG
 -'  10  0  ~/Documents/lecture-demos/HOW
 -'  1  0  ~/Documents/lecture-demos/HOW
--'  5  0  ~/Documents/lecture-demos/HOW
--'  2  0  ~/Documents/matt-stuff/MattLombana-assignments/.git/COMMIT_EDITMSG
--'  1  0  ~/Documents/matt-stuff/MattLombana-assignments/.git/COMMIT_EDITMSG
--'  2  0  ~/Documents/matt-stuff/MattLombana-assignments/.git/COMMIT_EDITMSG
--'  1  0  ~/Documents/matt-stuff/MattLombana-assignments/.git/COMMIT_EDITMSG
+-'  98  18  ~/dotfiles/bashrc
 
 # History of marks within files (newest to oldest):
 
 > ~/dotfiles/makesymlinks.sh
-	"	11	18
-	^	11	19
-	.	11	19
-	+	31	0
+	"	36	41
+	^	36	42
+	.	36	42
+	+	29	0
 	+	11	19
+	+	36	42
+
+> ~/dotfiles/bashrc
+	"	98	18
+	^	98	19
+	.	98	18
+	+	98	18
+
+> ~/dotfiles/vimrc
+	"	1	0
 
 > ~/dotfiles/.git/MERGE_MSG
 	"	1	5
