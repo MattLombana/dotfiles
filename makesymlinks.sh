@@ -2,13 +2,19 @@
 ############################
 # .make.sh
 # This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
+# The Arguments passed to the script will be the files symlinked to
 ############################
 
-########## Variables
+#Exit If no arguements were passed
+if [[ $# -eq 0 ]]; then
+	echo "No Arguments were passed!"
+	exit 1
+fi
 
+########## Variables
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc"    # list of files/folders to symlink in homedir
+files=$*    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -28,9 +34,11 @@ for file in $files; do
     mv ~/.$file ~/dotfiles_old/
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
+    
+    if [[ $file == ".vimrc" ]]; then
+    	echo "starting to install Awesome Vim"
+    	# install awesome vim (.vimrc)
+		git clone git://github.com/amix/vimrc.git ~/.vim_runtime
+		sh ~/.vim_runtime/install_awesome_vimrc.sh#statements
+    fi
 done
-
-
-# install awesome vim (.vimrc)
-git clone git://github.com/amix/vimrc.git ~/.vim_runtime
-sh ~/.vim_runtime/install_awesome_vimrc.sh
