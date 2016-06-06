@@ -35,7 +35,7 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
     
-    if [[ $file == ".vimrc" ]]; then
+    if [[ $file == "vimrc" ]]; then
     	echo "starting to install Awesome Vim"
     	# install awesome vim (.vimrc)
 		git clone git://github.com/amix/vimrc.git ~/.vim_runtime
