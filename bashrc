@@ -57,7 +57,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [[ "$color_prompt" = yes ]] && [[ -n $SSH_CLIENT ]] && [[ $EUID -eq 0 ]]; then # if root and ssh'd in
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;160m\]\[\033[38;5;45m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;160m\]\u@\[\033[38;5;45m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     # color='\[\033[38;5;160m\]\[\033[48;5;4m\]'
 elif [[ "$color_prompt" = yes ]] && [[ -n $SSH_CLIENT ]]; then #if ssh'd in
     PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;45m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
