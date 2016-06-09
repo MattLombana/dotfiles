@@ -51,11 +51,14 @@ execute pathogen#infect()
     set cursorline                              " Show a horizontal line underneath the cursor
 " }}}
 
-
 " Numbers, Lines, and Folding
 " {{{
     set number                                  " Display line numbers
+    set relativenumber                          " Display relative line numbers
     ""set ruler                                   " Display cursor position
+    set colorcolumn=101                         " Display a line at 101 characters
+    " Sets the color column to grey, default is red
+    highlight ColorColumn ctermbg=0 guibg=lightgrey
     set showcmd                                 " Display commands at the bottom of the screen
     set foldenable                              " Enable folding
     set foldlevelstart=10                          " Open up to 10 folds by default/start
@@ -95,6 +98,17 @@ execute pathogen#infect()
 " }}}
 
 
+" Undo and Backup
+" {{{
+    ""set undofile                                " Enable persistent undo commands for a file
+    ""set undodir=~/.vim_runtime/temp_dirs/undo   " The directory to save undo files
+    set undolevels=1000                         " The number of undo's to save (max=1000)
+    set undoreload=10000                        " The number of undo's to reload upon open (max=10000)
+    set backupdir=~/.vim/backup/                " The directory for vim to backup to
+    set directory=~/.vim/backup/                " Set the directory to save vim files
+" }}}
+
+
 " Key Remaps
 " {{{
     " Cannot use inline comments otherwise they will be interpreted as part of the command
@@ -116,9 +130,32 @@ execute pathogen#infect()
     nnoremap <space><space> i<space><esc>
     " Press space bar and f to open/close folds
     nnoremap <space>f za
+    " Press space bar, f, and space bar again to open all folds
+    nnoremap ff<space> zR
+    " Press f, spacebar, f to close all folds
+    nnoremap <space>ff zM
+    " Press leader twice to switch between two buffers
+    nnoremap    <leader><leader> <C-^>
+    " Press v twice to hightlight an entire line in normal mode
+    nnoremap vv V
+    "  Allow w! to write to sudo files
+    cnoremap w! w !sudo tee % >/dev/null/
+    " Call Number Toggle with <ctrl> + l
+    nnoremap <C-l> :call NumberToggle()<cr>
+    inoremap <C-l> <esc>:call NumberToggle()<cr>i
 " }}}
 
 
+" Number Toggle Function
+" {{{
+    function! NumberToggle()
+        if(&relativenumber == 1)
+            set norelativenumber
+        else
+            set relativenumber
+        endif
+    endfunc
+" }}}
 " Make searches always 'very magic'
 " {{{
     nnoremap / /\v
@@ -156,16 +193,16 @@ execute pathogen#infect()
 " }}}
 
 
-" Get vim to open this file folded for easier readability
+"Get vim to open this file folded for easier readability
 " {{{
         " How this works:
-            " foldmethod=marker tells vim to use markers instead of tabs
-            " foldlevel=0 tells vim to fold everything
-            " Because we set foldmethod to markers, we must wrap each section with {{{ to start, and }}} to end:
-            "               example:
-            "               " Section Name {{{
-            "               section commands " These will be folded
-            "               " }}}
+        " foldmethod=marker tells vim to use markers instead of tabs
+        " foldlevel=0 tells vim to fold everything
+        " Because we set foldmethod to markers, we must wrap each section with {{{ to start, and }}} to end:
+        "     example:
+        "               " Section Name {{{
+        "               section commands " These will be folded
+        "               " }}}
 " }}}
 
 set modelines=1                             " Set vim to only use these settings for THIS file
