@@ -109,6 +109,18 @@ execute pathogen#infect()
 " }}}
 
 
+" Control-P Settings
+" {{{
+    let g:ctrlp_map = '<c-p>'                   " Sets the mapping for CtrlP
+    let g:ctrlp_command = 'CtrlP'               " Sets the command for CtrlP
+    let g:ctrlp_working_path_mode = 'ra'        " Sets the working path to nearest ancestor that has a root marker
+    "let g:ctrlp_root_markers = ''               " Sets the root markers for project directories
+    set wildignore+=*/tmp/*,*.so,*.swp,*.zip    " Tells the fuzzy finder to ignore files that match the expressions (Linux/MacOSX)
+    set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe " Tells the fuzzy finder to ignore files that match the expressions (Windows)
+
+" }}}
+
+
 " Key Remaps
 " {{{
     " Cannot use inline comments otherwise they will be interpreted as part of the command
@@ -140,6 +152,8 @@ execute pathogen#infect()
     nnoremap vv V
     "  Allow w! to write to sudo files
     cnoremap w! w !sudo tee % >/dev/null/
+    " Allow qq to quit without typing !
+    cnoremap qq q!
     " Call Number Toggle with <ctrl> + l
     nnoremap <C-l> :call NumberToggle()<cr>
     inoremap <C-l> <esc>:call NumberToggle()<cr>i
