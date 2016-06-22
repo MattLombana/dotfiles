@@ -51,6 +51,7 @@ execute pathogen#infect()
     set cursorline                              " Show a horizontal line underneath the cursor
 " }}}
 
+
 " Numbers, Lines, and Folding
 " {{{
     set number                                  " Display line numbers
@@ -123,10 +124,12 @@ execute pathogen#infect()
 
 " NERDTree Settings
 " {{{
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
     autocmd vimenter * NERDTree
     autocmd StdinReadPre * let s:std_in=1
-    autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+    "autocmd VimEnter * if argc() == 1 && !exists("s:std_in") | NERDTree | endif
     map <C-n> :NERDTreeToggle<CR>
+    autocmd VimEnter * wincmd h
 " }}}
 
 
@@ -136,7 +139,6 @@ execute pathogen#infect()
     exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
     exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
     endfunction
-
     call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
     call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
     call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
