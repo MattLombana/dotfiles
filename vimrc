@@ -91,6 +91,10 @@ execute pathogen#infect()
     autocmd BufRead,BufNewFile *.html setlocal spell
     " Turn on spell checking by default for txt files
     autocmd BufRead,BufNewFile *.txt setlocal spell
+    " Turn on spell checking by default for yml files
+    autocmd BufRead,BufNewFile *.yml setlocal spell
+    " Turn on spell checking by default for yaml files
+    autocmd BufRead,BufNewFile *.yaml setlocal spell
     " Set a red background for misspelled words 
     hi SpellBad ctermbg=red
     
