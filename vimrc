@@ -79,6 +79,24 @@ execute pathogen#infect()
 " }}}
 
 
+" Spell Checking
+" {{{
+    " Turn on spell checking by default for markdown files
+    autocmd BufRead,BufNewFile *.md setlocal spell
+    " Turn on spell checking by default for git commit files
+    autocmd BufRead,BufNewFile gitcommit setlocal spell
+    " Turn on spell checking by default for tex files
+    autocmd BufRead,BufNewFile *.tex setlocal spell
+    " Turn on spell checking by default for html files
+    autocmd BufRead,BufNewFile *.html setlocal spell
+    " Turn on spell checking by default for txt files
+    autocmd BufRead,BufNewFile *.txt setlocal spell
+    " Set a red background for misspelled words 
+    hi SpellBad ctermbg=red
+    
+" }}}
+
+
 " Word Wrap
 " {{{
     ""set wrap                                   " Wrap visually instead of changing text in buffer
