@@ -95,7 +95,7 @@ execute pathogen#infect()
     autocmd BufRead,BufNewFile *.yml setlocal spell
     " Turn on spell checking by default for yaml files
     autocmd BufRead,BufNewFile *.yaml setlocal spell
-    " Set a red background for misspelled words 
+    " Set a red background for misspelled words
     hi SpellBad ctermbg=red
 " }}}
 
@@ -105,6 +105,14 @@ execute pathogen#infect()
     " Lint any .py file on write
     autocmd BufWritePost *.py call Flake8()
 " }}}
+
+
+" Trailer Trash
+" {{{
+    " Set automatic highlighting in blue
+    hi UnwantedTrailerTrash guibg=blue ctermbg=blue
+" }}}
+
 
 " Word Wrap
 " {{{
