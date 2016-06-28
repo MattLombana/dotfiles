@@ -148,3 +148,5 @@ alias main='cd ~'
 alias mian='cd ~'
 alias back='cd -'
 alias user='echo $USER'
+alias todo='~/Program-Files/todo.txt_cli-2.9/todo.sh'
+complete -F _todo todo

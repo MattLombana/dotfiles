@@ -131,6 +131,10 @@ execute pathogen#infect()
     ""set tabstop=4                               " Set the number of spaces <Tab> equals to x
     ""set shiftwidth=4                            " Set the number of spaces to use for each auto-indent, ex. >>, <<, commands
     set softtabstop=4                           " Set the number of columns vim uses when you hit <Tab>
+    " Set tabstop to be 2 spaces if the editing file is yaml
+    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+    " Set tabstop to be 2 spaces if the editing file is yml
+    autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab
 " }}}
 
 
