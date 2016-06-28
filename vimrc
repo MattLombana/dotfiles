@@ -97,9 +97,14 @@ execute pathogen#infect()
     autocmd BufRead,BufNewFile *.yaml setlocal spell
     " Set a red background for misspelled words 
     hi SpellBad ctermbg=red
-    
 " }}}
 
+
+" Flake8 Linter
+" {{{
+    " Lint any .py file on write
+    autocmd BufWritePost *.py call Flake8()
+" }}}
 
 " Word Wrap
 " {{{
