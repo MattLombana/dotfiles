@@ -1,4 +1,5 @@
 " NOTE: If sections are collapsed, za will reopen them. similarly <space> f has been remapped to za
+"       ff<space> will open all folds, and <space>ff will close all folds
 
 
 
@@ -40,7 +41,7 @@ execute pathogen#infect()
 " }}}
 
 
-" Mouse and Scrolling
+" Mouse, Scrolling, and Windows
 " {{{
     "set mouse=a                                 " Enable mouse for all modes
     set mousefocus                              " Window focus follows mouse
@@ -49,6 +50,8 @@ execute pathogen#infect()
     set whichwrap+=<,>,[,],h,l,                 " <Left>, <Right>, h, and l wrap around line breaks
     set nostartofline                           " Don't reset cursor to start of line when moving around
     set cursorline                              " Show a horizontal line underneath the cursor
+    " Close the last window automatically if it is a quickfix/location list window
+    :autocmd WinEnter * if &bufType ==# 'quickfix' && winnr('$') == 1 | quit | endif
 " }}}
 
 
@@ -192,6 +195,13 @@ execute pathogen#infect()
     call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
     call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
     call NERDTreeHighlightFile('py', 'yellow', 'none', '#ffda4c', '#151515')
+" }}}
+
+
+" Syntastic Settings
+" {{{
+    let g:syntastic_perl_checkers = ['perl']
+    let g:syntastic_enable_perl_checker = 1
 " }}}
 
 
