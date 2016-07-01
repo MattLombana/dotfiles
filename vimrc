@@ -51,7 +51,7 @@ execute pathogen#infect()
     set nostartofline                           " Don't reset cursor to start of line when moving around
     set cursorline                              " Show a horizontal line underneath the cursor
     " Close the last window automatically if it is a quickfix/location list window
-    :autocmd WinEnter * if &bufType ==# 'quickfix' && winnr('$') == 1 | quit | endif
+    :autocmd WinEnter * if &buftype ==# 'quickfix' && winnr('$') == 1 | quit | endif
 " }}}
 
 
@@ -114,6 +114,7 @@ execute pathogen#infect()
 " {{{
     " Set automatic highlighting in blue
     hi UnwantedTrailerTrash guibg=blue ctermbg=blue
+    autocmd BufWritePost call Trim()            " trim trailing whitespace
 " }}}
 
 
@@ -166,7 +167,9 @@ execute pathogen#infect()
 
 " NERDTree Settings
 " {{{
+    " Close NerdTree if its the only buffer open
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+    " Open NerdTree on start
     autocmd vimenter * NERDTree
     autocmd StdinReadPre * let s:std_in=1
     "autocmd VimEnter * if argc() == 1 && !exists("s:std_in") | NERDTree | endif
@@ -175,7 +178,7 @@ execute pathogen#infect()
 " }}}
 
 
-" NERDTress File highlighting
+" NERDTree File highlighting
 " {{{
     function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
     exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
@@ -200,8 +203,11 @@ execute pathogen#infect()
 
 " Syntastic Settings
 " {{{
+    " Perl
     let g:syntastic_perl_checkers = ['perl']
     let g:syntastic_enable_perl_checker = 1
+    " YAML
+    let g:syntastic_yaml_checkers = ['jsyaml']
 " }}}
 
 
