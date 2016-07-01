@@ -238,6 +238,11 @@ execute pathogen#infect()
     nnoremap <space>ff zM
     " Press leader twice to switch between two buffers
     nnoremap    <leader><leader> <C-^>
+    " Use H, J, K, L to switch buffers
+    nnoremap H <C-w>h
+    nnoremap J <C-w>j
+    nnoremap K <C-w>k
+    nnoremap L <C-w>l
     " Press v twice to hightlight an entire line in normal mode
     nnoremap vv V
     "  Allow w! to write to sudo files
