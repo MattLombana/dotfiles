@@ -217,11 +217,32 @@ execute pathogen#infect()
 
 " Syntastic Settings
 " {{{
+    " C
+    let g:syntastic_c_checkers = ['gcc']
+    " HTML
+    let g:syntastic_html_checkers = ['tidy']
+    " Markdown
+    let g:syntastic_markdown_checkers = ['mdl']
+    " Java
+    let g:syntastic_java_checkers = ['javac']
+    " JavaScript
+    let g:syntastic_javascript_checkers = ['jshint']
+    " OCaml
+    let g:syntastic_ocaml_checkers = ['camlp4o']
     " Perl
     let g:syntastic_perl_checkers = ['perl']
     let g:syntastic_enable_perl_checker = 1
+    " Bash/sh
+    let g:syntastic_sh_checkers = ['sh']
     " YAML
     let g:syntastic_yaml_checkers = ['jsyaml']
+" }}}
+
+
+" YouCompleteMe Settings
+" {{{
+    " Turn off diagnostics to enable syntastic
+    let g:ycm_show_diagnostics_ui = 0
 " }}}
 
 
