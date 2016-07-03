@@ -178,7 +178,7 @@ execute pathogen#infect()
     " Open NerdTree on start
     let g:nerdtree_tabs_open_on_console_startup=1
     autocmd vimenter * NERDTreeTabsToggle
-    autocmd vimenter * 10 wincmd <
+    autocmd vimenter * 13 wincmd <
     "autocmd StdinReadPre * let s:std_in=1
     "autocmd VimEnter * if argc() == 1 && !exists("s:std_in") | NERDTree | endif
     map <C-n> :NERDTreeTabsToggle<CR>
@@ -217,7 +217,7 @@ execute pathogen#infect()
     let g:tagbar_open_on_console_startup=1
     autocmd vimenter * TagbarOpen
     autocmd VimEnter * wincmd l
-    autocmd VimEnter * 10 wincmd <
+    autocmd VimEnter * 12 wincmd <
     autocmd VimEnter * wincmd h
     "Allow <leader>tb to open Tagbar
     nnoremap <leader>tb :TagbarToggle<cr>
