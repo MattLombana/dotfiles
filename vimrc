@@ -169,17 +169,20 @@ execute pathogen#infect()
 
 " NERDTree Settings
 " {{{
+    " Set NERDTree to open on left
+    let g:NERDTreeWinPos = "left"
     " Use <leader>nn to toggle NERDTree
     nnoremap <leader>nn :NERDTreeToggle<cr>
     " Close NerdTree if its the only buffer open
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
     " Open NerdTree on start
-    " let g:nerdtree_tabs_open_on_console_startup=1
-    " autocmd vimenter * NERDTreeTabsToggle
+    let g:nerdtree_tabs_open_on_console_startup=1
+    autocmd vimenter * NERDTreeTabsToggle
+    autocmd vimenter * 10 wincmd <
     "autocmd StdinReadPre * let s:std_in=1
     "autocmd VimEnter * if argc() == 1 && !exists("s:std_in") | NERDTree | endif
     map <C-n> :NERDTreeTabsToggle<CR>
-    autocmd VimEnter * wincmd h
+    autocmd VimEnter * wincmd l
 " }}}
 
 
@@ -213,8 +216,9 @@ execute pathogen#infect()
     "let Tagbar open on startup
     let g:tagbar_open_on_console_startup=1
     autocmd vimenter * TagbarOpen
+    autocmd VimEnter * wincmd l
+    autocmd VimEnter * 10 wincmd <
     autocmd VimEnter * wincmd h
-" }}
     "Allow <leader>tb to open Tagbar
     nnoremap <leader>tb :TagbarToggle<cr>
 " }}}
