@@ -53,7 +53,7 @@ execute pathogen#infect()
     " Close the last window automatically if it is a quickfix/location list window
     :autocmd WinEnter * if &buftype ==# 'location' && winnr('$') == 1 | quit | endif
     " Use ctrl + t to open a new tab
-    nnoremap <C-t> :tabnew<cr>
+    nnoremap <C-t> :call NewTab()<cr>
 " }}}
 
 
@@ -169,13 +169,13 @@ execute pathogen#infect()
 
 " NERDTree Settings
 " {{{
-    " Use <leader>nn to toggle NERDTreeTabs
-    let g:nerdtree_tabs_open_on_console_startup=1
-    nnoremap <leader>nn :NERDTreeTabsToggle<cr>
+    " Use <leader>nn to toggle NERDTree
+    nnoremap <leader>nn :NERDTreeToggle<cr>
     " Close NerdTree if its the only buffer open
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
     " Open NerdTree on start
-    "autocmd vimenter * NERDTreeTabsToggle
+    " let g:nerdtree_tabs_open_on_console_startup=1
+    " autocmd vimenter * NERDTreeTabsToggle
     "autocmd StdinReadPre * let s:std_in=1
     "autocmd VimEnter * if argc() == 1 && !exists("s:std_in") | NERDTree | endif
     map <C-n> :NERDTreeTabsToggle<CR>
@@ -210,7 +210,12 @@ execute pathogen#infect()
 " {{{
     " Open Tagbar on entering a new tab
     autocmd TabEnter * :TagbarOpen<cr>
-    " Allow <leader>cm to open Tagbar
+    "let Tagbar open on startup
+    let g:tagbar_open_on_console_startup=1
+    autocmd vimenter * TagbarOpen
+    autocmd VimEnter * wincmd h
+" }}
+    "Allow <leader>tb to open Tagbar
     nnoremap <leader>tb :TagbarToggle<cr>
 " }}}
 
@@ -298,6 +303,15 @@ execute pathogen#infect()
         else
             set relativenumber
         endif
+    endfunc
+" }}}
+
+
+" New Tab Function
+" {{{
+    function! NewTab()
+       :tabnew
+       :NERDTreeToggle
     endfunc
 " }}}
 
