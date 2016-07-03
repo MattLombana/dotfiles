@@ -41,7 +41,7 @@ execute pathogen#infect()
 " }}}
 
 
-" Mouse, Scrolling, and Windows
+" Mouse, Scrolling, Tabs, and Windows
 " {{{
     "set mouse=a                                 " Enable mouse for all modes
     set mousefocus                              " Window focus follows mouse
@@ -51,7 +51,9 @@ execute pathogen#infect()
     set nostartofline                           " Don't reset cursor to start of line when moving around
     set cursorline                              " Show a horizontal line underneath the cursor
     " Close the last window automatically if it is a quickfix/location list window
-    :autocmd WinEnter * if &buftype ==# 'quickfix' && winnr('$') == 1 | quit | endif
+    :autocmd WinEnter * if &buftype ==# 'location' && winnr('$') == 1 | quit | endif
+    " Use ctrl + t to open a new tab
+    nnoremap <C-t> :tabnew<cr>
 " }}}
 
 
@@ -167,13 +169,16 @@ execute pathogen#infect()
 
 " NERDTree Settings
 " {{{
+    " Use <leader>nn to toggle NERDTreeTabs
+    let g:nerdtree_tabs_open_on_console_startup=1
+    nnoremap <leader>nn :NERDTreeTabsToggle<cr>
     " Close NerdTree if its the only buffer open
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
     " Open NerdTree on start
-    autocmd vimenter * NERDTree
-    autocmd StdinReadPre * let s:std_in=1
+    "autocmd vimenter * NERDTreeTabsToggle
+    "autocmd StdinReadPre * let s:std_in=1
     "autocmd VimEnter * if argc() == 1 && !exists("s:std_in") | NERDTree | endif
-    map <C-n> :NERDTreeToggle<CR>
+    map <C-n> :NERDTreeTabsToggle<CR>
     autocmd VimEnter * wincmd h
 " }}}
 
@@ -198,6 +203,15 @@ execute pathogen#infect()
     call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
     call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
     call NERDTreeHighlightFile('py', 'yellow', 'none', '#ffda4c', '#151515')
+" }}}
+
+
+" Tagbar Settings
+" {{{
+    " Open Tagbar on entering a new tab
+    autocmd TabEnter * :TagbarOpen<cr>
+    " Allow <leader>cm to open Tagbar
+    nnoremap <leader>tb :TagbarToggle<cr>
 " }}}
 
 
@@ -245,7 +259,7 @@ execute pathogen#infect()
     nnoremap L <C-w>l
     " Press v twice to hightlight an entire line in normal mode
     nnoremap vv V
-    "  Allow w! to write to sudo files
+    " Allow w! to write to sudo files
     cnoremap w! w !sudo tee % >/dev/null/
     " Allow qq to quit without typing !
     cnoremap qq q!
