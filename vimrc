@@ -117,6 +117,7 @@ execute pathogen#infect()
     " Set automatic highlighting in blue
     hi UnwantedTrailerTrash guibg=blue ctermbg=blue
     autocmd BufWritePost call Trim()            " trim trailing whitespace
+    autocmd BufWritePost * TrailerTrim
 " }}}
 
 
@@ -330,18 +331,6 @@ execute pathogen#infect()
 " Jump to last known position in a file just after opening it
 " {{{
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-" }}}
-
-
-" Whitespace Handling
-" {{{
-    function! StripTrailingWhitespaces()
-        let l = line(".")
-        let c = col(".")
-        %s/\s\+$//e                             " Delete trailing whitespace
-        call cursor(l,c )                       " s going on. If you can't, :help [setting] is your best friend.Return cursor to previous position
-    endfunction
-    autocmd FileType perl,sh,python,vi autocmd BufWrite <buffer> :call StripTrailingWhitespaces()
 " }}}
 
 
