@@ -316,7 +316,7 @@ execute pathogen#infect()
 " {{{
     function! NewTab()
        :tabnew
-       :NERDTreeToggle
+       :NERDTree
     endfunc
 " }}}
 
