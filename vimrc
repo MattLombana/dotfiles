@@ -180,10 +180,8 @@ execute pathogen#infect()
     let g:nerdtree_tabs_open_on_console_startup=1
     autocmd vimenter * NERDTreeTabsToggle
     autocmd vimenter * 13 wincmd <
-    "autocmd StdinReadPre * let s:std_in=1
-    "autocmd VimEnter * if argc() == 1 && !exists("s:std_in") | NERDTree | endif
-    map <C-n> :NERDTreeTabsToggle<CR>
     autocmd VimEnter * wincmd l
+    map <C-n> :NERDTreeTabsToggle<CR>
 " }}}
 
 
@@ -212,8 +210,6 @@ execute pathogen#infect()
 
 " Tagbar Settings
 " {{{
-    " Open Tagbar on entering a new tab
-    autocmd TabEnter * :TagbarOpen<cr>
     "let Tagbar open on startup
     let g:tagbar_open_on_console_startup=1
     autocmd vimenter * TagbarOpen
@@ -317,6 +313,13 @@ execute pathogen#infect()
     function! NewTab()
        :tabnew
        :NERDTree
+       :TagbarOpen
+       :13 wincmd <
+       :wincmd l
+       :wincmd l
+       :12 wincmd <
+       : wincmd h
+       :wincmd h
     endfunc
 " }}}
 
