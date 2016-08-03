@@ -1,0 +1,40 @@
+# File containing the ssh-connection information about each machine to configure
+
+# Server #1 used to manage other appliances
+Host server001-management
+    Hostname 11.22.33.44
+    IdentityFile ~/.ssh/id_rsa
+    StrictHostKeyChecking no
+    UserKnownHostsFile=/dev/null
+
+
+# Server #2 used to run a CI server
+Host server002-CI-server
+    Hostname 11.22.33.44
+    IdentityFile ~/.ssh/id_rsa
+    StrictHostKeyChecking no
+    UserKnownHostsFile=/dev/null
+
+
+# Server #3 used for practice hacking
+Host server002-metasploitable
+    Hostname 11.22.33.44
+    IdentityFile ~/.ssh/id_rsa
+    StrictHostKeyChecking no
+    UserKnownHostsFile=/dev/null
+
+
+# Workstation running Kali Linux 2.0
+Host kali-linux-desktop
+    Hostname 11.22.33.44
+    IdentityFile ~/.ssh/id_rsa
+    StrictHostKeyChecking no
+    UserKnownHostsFile=/dev/null
+
+
+# Workstation installed with fedora 24
+Host fedora24-workstation.domain.local
+    Hostname 11.22.33.44
+    IdentityFile ~/.ssh/id_rsa
+    StrictHostKeyChecking no
+    UserKnownHostsFile=/dev/null

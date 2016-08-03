@@ -1,0 +1,12 @@
+# File containing a mapping of hosts to their type
+
+# Server hostnames which you wish to configure
+[servers]
+server001-management
+server002-CI-server
+server002-metasploitable
+
+# Workstation machines that you want to configure
+[workstations]
+kali-linux-desktop
+fedora24-workstation.domain.local

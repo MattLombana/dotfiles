@@ -1,0 +1,8 @@
+---
+
+# Playbook to automate the setup and configuration of a linux-based os. This playbook assumes the os will operate in a server environment, and will install tools used for server administration
+
+---
+
+
+

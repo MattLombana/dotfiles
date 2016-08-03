@@ -1,0 +1,9 @@
+# .gitignore file for my dotfiles repository
+
+# Ansible files
+*.retry
+
+# Ignore configuration files
+# All files with a .local extension will be ignored, unless it is also a template
+*.local*
+!*.local.template*
