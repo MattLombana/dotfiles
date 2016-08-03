@@ -97,9 +97,9 @@ execute pathogen#infect()
     " Turn on spell checking by default for txt files
     autocmd BufRead,BufNewFile *.txt setlocal spell
     " Turn on spell checking by default for yml files
-    autocmd BufRead,BufNewFile *.yml setlocal spell
+    "autocmd BufRead,BufNewFile *.yml setlocal spell
     " Turn on spell checking by default for yaml files
-    autocmd BufRead,BufNewFile *.yaml setlocal spell
+    "autocmd BufRead,BufNewFile *.yaml setlocal spell
     " Set a red background for misspelled words
     hi SpellBad ctermbg=red
 " }}}
@@ -271,6 +271,10 @@ execute pathogen#infect()
     nnoremap B ^
     " Press space bartwice to insert a space in normal mode
     nnoremap <space><space> i<space><esc>
+    " Pres - to enter an empty line above in normal mode
+    nnoremap - I<Return><esc>
+    " Pres Ctrl-m to enter an empty line below in normal mode
+    nnoremap <C-m> A<Return><esc>k
     " Press space bar and f to open/close folds
     nnoremap <space>f za
     " Press f twice then space to open all folds
