@@ -1,0 +1,11 @@
+# File used to configure settings
+ssh_ password: toor
+server-repos:
+  - epel: http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+  - rpmfusion-free: http://download1.rpmfusion.org/free/el/updates/6/i386/rpmfusion-free-release-6-1.noarch.rpm
+  - rpmfusion-nonfree: http://download1.rpmfusion.org/nonfree/el/updates/6/i386/rpmfusion-nonfree-release-6-1.noarch.rpm
+workstation-repos:
+  - negativo: http://negativo17.org/repos/fedora-negativo17.repo
+  - rpmfusion-free: http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-24.noarch.rpm
+  - rpmfusion-nonfree: http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-24.noarch.rpm
+

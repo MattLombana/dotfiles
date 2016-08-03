@@ -1,9 +1,0 @@
-# File used to configure settings
-
-server-repos:
-  - epel: https://www.example.com
-workstation-repos:
-  - epel:
-  - negativo: https://
-  - rpmfusion: https://
-

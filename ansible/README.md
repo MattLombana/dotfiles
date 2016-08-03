@@ -44,7 +44,7 @@ Each one of these playbooks has settings that can be edited to tweak your needs.
 
 * [hosts.local](./variables/hosts.local.template)
 * [ssh-config.local](./variables/ssh-config.local.template)
-* [variables.local.yml](./variables/variables.local.template.yml)
+* [all.local.yml](./variables/all.yml)
 
 ##### hosts.local
 
@@ -55,7 +55,7 @@ There will be two different types of machines: server, and workstation, add the 
 
 This file contains the ssh connection information about each machine you plan on configuring. At a minimum, you must change the hostname and ip address of each machine.
 
-##### variables.local.yml
+##### all.local.yml
 
 This file contains the configurable settings for the playbooks. Settings such as repos, programs and other sort of things will be defined in this file.
 
