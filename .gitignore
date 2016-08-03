@@ -7,3 +7,7 @@
 # All files with a .local extension will be ignored, unless it is also a template
 *.local*
 !*.local.template*
+
+
+# Ignore old dotfiles directory
+dotfiles_old/
