@@ -1,0 +1,17 @@
+---
+#
+# Install vim plugins
+#
+
+
+- name: make .vimrc directory
+  file: path=~/.vim state=directory
+
+- name: make bundle directory
+  file: path=~/.vim/bundle state=directory
+
+- name: download vim plugins
+  git: repo="{{ item }}"
+       dest=~/.vim/bundle/
+       clone=yes
+  with_items: "{{ vim_plugins }}"
