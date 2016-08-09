@@ -6,8 +6,8 @@
 - hosts: workstations
   gather_facts: true
   vars_files:
-    - ./variables/all.yml
-    - ./variables/all.local.yml
+    - ../variables/all.yml
+    - ../variables/all.local.yml
   roles:
     - hostname
     - repos

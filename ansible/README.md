@@ -38,12 +38,12 @@ This playbook automates the configuration of an operating system that will be in
 
 ### How-To-use
 
-Each one of these playbooks has settings that can be edited to tweak your needs. These variables and settings can be found in the [variables](./variables/) directory. You will need to edit 3 files in total. Templates have been provided. Once all three files have been properly modified, see [how to run](#how-to-run)
+Each one of these playbooks has settings that can be edited to tweak your needs. These variables and settings can be found in this directory as well as the [variables](./variables/) directory. You will need to edit 3 files in total. Templates have been provided. Once all three files have been properly modified, see [how to run](#how-to-run)
 
 #### Files To Modify
 
-* [hosts.local](./variables/hosts.local.template)
-* [ssh-config.local](./variables/ssh-config.local.template)
+* [hosts.local](./hosts.local.template)
+* [ssh-config.local](./ssh-config.local.template)
 * [all.local.yml](./variables/all.yml)
 
 ##### hosts.local
@@ -64,9 +64,9 @@ This file contains the configurable settings for the playbooks. Settings such as
 Once all the config files have been modified, you should run these playbooks from the ansible directory:
 
 ```bash
-ansible-playbook -i ./variables/hosts.local server-os-setup.yml
+ansible-playbook -i hosts.local playbooks/server-os-setup.yml
 ```
 
 ```bash
-ansible-playbook -i ./variables/hosts.local workstation-os-setup.yml
+ansible-playbook -i hosts.local playbooks/workstation-os-setup.yml
 ```
