@@ -43,5 +43,7 @@ vim_plugins:
     author: airblade
   - plugin: nerdcommenter
     author: scrooloose
+  - plugin: vim-autocorrect
+    author: panozzaj
 
 github_prefix: http://github.com/ # or git@github.com:

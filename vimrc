@@ -105,6 +105,18 @@ execute pathogen#infect()
 " }}}
 
 
+" AutoCorrect Settings
+" {{{
+    " turn on AutoCorrect for text files
+    autocmd BufRead,BufNewFile *.txt call AutoCorrect()
+    " Turn on AutoCorrect for markdown files
+    autocmd BufRead,BufNewFile *.md call AutoCorrect()
+    " Turn on AutoCorrect for yaml files
+    autocmd BufRead,BufNewFile *.yml call AutoCorrect()
+    autocmd BufRead,BufNewFile *.yaml call AutoCorrect()
+" }}}
+
+
 " Flake8 Linter
 " {{{
     " Lint any .py file on write
