@@ -111,6 +111,7 @@ alias lsl='ls -l'
 alias lsa='ls -a'
 alias lsal='ls -al'
 alias lsla='ls -al'
+alias lslah='ls -lah'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -135,7 +136,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
 
 
 ##########     User Functions     ##########
