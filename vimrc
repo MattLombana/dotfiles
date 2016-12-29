@@ -84,7 +84,7 @@ execute pathogen#infect()
 " }}}
 
 
-" Spell Checking
+" Spell  Checking
 " {{{
     " Turn on spell checking by default for markdown files
     autocmd BufRead,BufNewFile *.md setlocal spell
@@ -154,6 +154,8 @@ execute pathogen#infect()
     autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
     " Set tabstop to be 2 spaces if the editing file is yml
     autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab
+    " Set tabstop to be 4 spaces if the editing file is tex
+    autocmd FileType tex setlocal ts=4 sts=4 sw=4 expandtab
 " }}}
 
 
@@ -261,6 +263,16 @@ execute pathogen#infect()
 " {{{
     " Turn off diagnostics to enable syntastic
     let g:ycm_show_diagnostics_ui = 0
+" }}}
+
+
+" Vim-Latex Settings
+" {{{
+    let g:tex_flavor = 'latex'
+    let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode $*'
+    let g:Tex_DefaultTargetFormat = 'pdf'
+    let g:Tex_ViewRUle_pdf = 'evince'
+    set grepprg=grep\ -nH\ $*
 " }}}
 
 
