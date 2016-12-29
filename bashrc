@@ -102,16 +102,6 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias ls-al='ls -al'
-alias lsl='ls -l'
-alias lsa='ls -a'
-alias lsal='ls -al'
-alias lsla='ls -al'
-alias lslah='ls -lah'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -126,6 +116,10 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+if [ -f ~/dotfiles/bash_aliases ]; then
+    . ~/dotfiles/bash_aliases
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -136,6 +130,11 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+
+##########     User Changes       ##########
+GPG_TTY=`tty`
+export GPG_TTY
 
 
 ##########     User Functions     ##########
@@ -150,14 +149,4 @@ function set-title() {
 }
 
 
-##########     Other Aliases      ##########
-alias c='clear'
-alias cd..='cd ..'
-alias ..='cd ..'
-alias home='cd ~/..'
-alias main='cd ~'
-alias mian='cd ~'
-alias back='cd -'
-alias user='echo $USER'
-alias todo='~/Program-Files/todo.txt_cli-2.9/todo.sh'
 complete -F _todo todo
