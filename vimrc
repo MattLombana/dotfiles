@@ -3,7 +3,7 @@
 
 
 
-""""""""""""""""""""""""""""""""""""""""Awesome Vim Configurations""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""Awesome Vim Configurations"""""""""""""""""""""""""""""""""""""
 " {{{
 set runtimepath+=~/.vim_runtime
 
@@ -18,9 +18,9 @@ catch
 endtry
 " }}}
 
-""""""""""""""""""""""""""""""""""""""""Personal Vim Configurations""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""Personal Vim Configurations""""""""""""""""""""""""""""""""""""
 
-""""""""""Lines with two sets of quotes are included in the ~./vim_runtime/vimrcs/basic.vim file"""""""""""
+""""""Lines with two sets of quotes are included in the ~./vim_runtime/vimrcs/basic.vim file""""""""
 
 
 ""filetype plugin on
