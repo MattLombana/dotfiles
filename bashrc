@@ -56,6 +56,22 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# PS1 Color setting
+#
+# Pattern:
+# user@hostname:path$
+#
+# Colors:
+# +----------------------------------+----------------+--------------------+------------+
+# |                                  |  User Color    |   Hostname Color   | Path Color |
+# +----------------------------------+----------------+--------------------+------------+
+# | Standard user on local machine   |  Green         |   Greeen           | Blue       |
+# | Root user on local machine       |  Red           |   Red              | Blue       |
+# | Standard user on foreign machine |  Blue          |   Blue             | Blue       |
+# | Root user on foreign machine     |  Red           |   Blue             | Blue       |
+# +----------------------------------+----------------+--------------------+------------+
+#
+
 if [[ "$color_prompt" = yes ]] && [[ -n $SSH_CLIENT ]] && [[ $EUID -eq 0 ]]; then # if root and ssh'd in
     PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;160m\]\u@\[\033[38;5;45m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     # color='\[\033[38;5;160m\]\[\033[48;5;4m\]'
@@ -71,11 +87,6 @@ else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 
-# if [ "$color_prompt" = yes ]; then
-#     PS1='${debian_chroot:+($debian_chroot)}$color\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-# else
-#     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-# fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -114,10 +125,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
-fi
-
-if [ -f ~/dotfiles/bash_aliases ]; then
-    . ~/dotfiles/bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
