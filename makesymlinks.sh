@@ -2,19 +2,32 @@
 ############################
 # .make.sh
 # This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
-# The Arguments passed to the script will be the files symlinked to
 ############################
 
-# Exit If no arguements were passed
-if [[ $# -eq 0 ]]; then
-	echo "No Arguments were passed!"
-	exit 1
-fi
-
 ########## Variables
-dir=~/dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old             # old dotfiles backup directory
-files=$*    # list of files/folders to symlink in homedir
+dir=~/dotfiles                          # dotfiles directory
+olddir=~/dotfiles_old                   # old dotfiles backup directory
+files="bashrc vimrc bash_aliases"       # list of files/folders to symlink in homedir
+vim_plugins="
+git@github.com:davidhalter/jedi-vim.git
+git@github.com/davidhalter/jedi.git
+git@github.com/scrooloose/nerdcommenter.git
+git@github.com/trusktr/seti.vim
+git@github.com:majutsushi/tagbar.git
+git@github.com:csexton/trailertrash.vim.git
+git@github.com:mbbill/undotree.git
+git@github.com:panozzaj/vim-autocorrect.git
+git@github.com:alvan/vim-closetag.git
+git@github.com:xolox/vim-easytags.git
+git@github.com:airblade/vim-gitgutter.git
+git@github.com:jamessan/vim-gnupg.git
+git@github.com:severin-lemaignan/vim-minimap.git
+git@github.com:xolox/vim-misc.git
+git@github.com:jistr/vim-nerdtree-tabs.git
+git@github.com:lervag/vimtex.git
+git@github.com:Valloric/YouCompleteMe.git
+git@github.com/ross/requests-futures
+git@github.com/Valloric/ycmd"
 
 ##########
 
@@ -37,6 +50,13 @@ for file in $files; do
         git clone git://github.com/amix/vimrc.git ~/.vim_runtime
         sh ~/.vim_runtime/install_awesome_vimrc.sh
         echo "Awesome Vim is installed"
+        mkdir ./vim/bundle
+        echo "Starting to install Vim Plugins"
+        for plugin in $vim_plugins; do
+            git clone $plugin ~/.vim/bundle/
+        done
+
+        echo "Vim plugins are downloaded, Make sure to configure 'YouCompleteMe'"
     fi
 
     echo "Moving any existing dotfiles from ~ to $olddir"
