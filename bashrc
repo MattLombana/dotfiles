@@ -157,3 +157,7 @@ function set-title() {
 
 # Teamocil autocompletion
 complete -W "$(teamocil --list)" teamocil
+
+
+# Failsafe for moving files (prevent accidental overwritting)
+alias mv="mv -i"
