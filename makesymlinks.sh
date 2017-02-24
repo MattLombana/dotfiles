@@ -7,7 +7,7 @@
 ########## Variables
 dir=~/dotfiles                          # dotfiles directory
 olddir=~/dotfiles_old                   # old dotfiles backup directory
-files="bashrc vimrc bash_aliases"       # list of files/folders to symlink in homedir
+files="bashrc vimrc bash_aliases tmux.conf"       # list of files/folders to symlink in homedir
 vim_plugins="
 git@github.com:davidhalter/jedi-vim.git
 git@github.com/davidhalter/jedi.git

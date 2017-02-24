@@ -18,7 +18,8 @@ It has several main parts to it:
 
 ## tmux.conf
 
-    This file is coming soon. As of now it is too "rough" to release
+    Contains my tmux configurations. It is stable, and well commented, so using it
+    shouldn't be an issue
 
 ## makesymlinks.sh
 
