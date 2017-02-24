@@ -19,7 +19,8 @@ It has several main parts to it:
 ## tmux.conf
 
     Contains my tmux configurations. It is stable, and well commented, so using it
-    shouldn't be an issue
+    shouldn't be an issue.
+    This also installs my teamocil configuration files.
 
 ## makesymlinks.sh
 
