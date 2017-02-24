@@ -1,0 +1,22 @@
+# Simple Three Pane Window
+#
+# +------------------+------------------+
+# | (1)              | (2)              |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# |                  +------------------+
+# |                  | (3) <focus here> |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# +------------------+------------------+
+#
+windows:
+  - name: Three Panes
+    root: ./
+    layout: main-vertical
+    panes:
+      - clear
+      - clear
+      - clear

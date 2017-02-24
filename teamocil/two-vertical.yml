@@ -1,0 +1,21 @@
+#  Simple Two Pane Layout
+#
+# +------------------+------------------+
+# | (1)              | (2) <focus here> |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# +------------------+------------------+
+#
+windows:
+  - name: Two Vertical
+    root: ./
+    layout: even-horizontal
+    panes:
+      - clear
+      - clear

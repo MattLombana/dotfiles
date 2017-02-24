@@ -1,0 +1,100 @@
+#  Simple Two Pane Layout
+#
+# .------------------.------------------.
+# | (0)              | (1)              |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# '------------------'------------------'
+#
+windows:
+  - name: sample-two-panes
+    root: ~/Code/sample/www
+    layout: even-horizontal
+    panes:
+      - git status
+      - rails server
+
+
+
+
+# Simple Three Pane Window
+#
+# .------------------.------------------.
+# | (0)              | (1)              |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# |                  |------------------|
+# |                  | (2)              |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# '------------------'------------------'
+#
+windows:
+  - name: sample-three-panes
+    root: ~/Code/sample/www
+    layout: main-vertical
+    panes:
+      - vim
+      - commands:
+        - git pull
+        - git status
+      - rails server
+
+
+
+
+# Simple Four Pane Window
+# .------------------.------------------.
+# | (0)              | (1)              |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# |------------------|------------------|
+# | (2)              | (3)              |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# '------------------'------------------'
+#
+windows:
+  - name: sample-four-panes
+    root: ~/Code/sample/www
+    layout: tiled
+    panes:
+      - vim
+      - foreman start web
+      - git status
+      - foreman start worker
+
+
+
+
+# Two Pane Window With Focus in Second Window
+# .------------------.------------------.
+# | (0)              | (1) <focus here> |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# '------------------'------------------'
+windows:
+  - name: sample-two-panes
+    root: ~/Code/sample/www
+    layout: even-horizontal
+    panes:
+      - rails server
+      - commands:
+          - rails console
+        focus: true

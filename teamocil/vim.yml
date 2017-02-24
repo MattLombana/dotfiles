@@ -1,0 +1,20 @@
+# Simple One Pane Window with vim
+#
+# +-------------------------------------+
+# | (1) <focus here>                    |
+# |                                     |
+# |                                     |
+# |                                     |
+# |                                     |
+# |                                     |
+# |                                     |
+# |                                     |
+# |                                     |
+# +-------------------------------------+
+#
+windows:
+  - name: VIM
+    root: ./
+    layout: tiled
+    panes:
+      - VIM

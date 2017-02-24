@@ -59,6 +59,11 @@ for file in $files; do
         echo "Vim plugins are downloaded, Make sure to configure 'YouCompleteMe'"
     fi
 
+    if [[ $file == "tmux.conf" ]]; then
+        echo "setting up teamocil directory"
+        ln -s $dir/teamocil/ ~/.teamocil
+    fi
+
     echo "Moving any existing dotfiles from ~ to $olddir"
     mv ~/.$file ~/dotfiles_old/
     echo "Creating symlink to $file in home directory."
