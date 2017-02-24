@@ -17,4 +17,4 @@ windows:
     root: ./
     layout: tiled
     panes:
-      - VIM
+      - vim
