@@ -155,5 +155,5 @@ function set-title() {
   PS1=${ORIG}${TITLE}
 }
 
-
-complete -F _todo todo
+# Teamocil autocompletion
+complete -W "$(teamocil --list)" teamocil
