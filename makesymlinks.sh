@@ -8,6 +8,7 @@
 dir=~/dotfiles                          # dotfiles directory
 olddir=~/dotfiles_old                   # old dotfiles backup directory
 files="bashrc vimrc bash_aliases tmux.conf"       # list of files/folders to symlink in homedir
+odd_files="flake8"                      # list of files that need to be handled individually
 vim_plugins="
 git@github.com:davidhalter/jedi-vim.git
 git@github.com:davidhalter/jedi.git
@@ -42,10 +43,11 @@ cd $dir
 echo "...done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
-echo "Moving any existing dotfiles from ~ to $olddir"
-mv ~/.$file ~/dotfiles_old/
 
 for file in $files; do
+    echo "Moving any existing dotfiles from ~ to $olddir"
+    mv ~/.$file ~/dotfiles_old/
+
     if [[ $file == "vimrc" ]]; then
         echo "starting to install Awesome Vim"
         # install awesome vim (.vimrc)
@@ -70,5 +72,13 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 
+done
+
+for file in $odd_files; do
+    if [[ $file == "flake8" ]]; then
+        echo "installing flake8 config"
+        mv ~/.config/flake8 $olddir/flake8
+        ln -s $dir/flake8 ~/.config/flake8
+    fi
 
 done
