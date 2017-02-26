@@ -10,9 +10,9 @@ olddir=~/dotfiles_old                   # old dotfiles backup directory
 files="bashrc vimrc bash_aliases tmux.conf"       # list of files/folders to symlink in homedir
 vim_plugins="
 git@github.com:davidhalter/jedi-vim.git
-git@github.com/davidhalter/jedi.git
-git@github.com/scrooloose/nerdcommenter.git
-git@github.com/trusktr/seti.vim
+git@github.com:davidhalter/jedi.git
+git@github.com:scrooloose/nerdcommenter.git
+git@github.com:trusktr/seti.vim
 git@github.com:majutsushi/tagbar.git
 git@github.com:csexton/trailertrash.vim.git
 git@github.com:mbbill/undotree.git
@@ -26,8 +26,8 @@ git@github.com:xolox/vim-misc.git
 git@github.com:jistr/vim-nerdtree-tabs.git
 git@github.com:lervag/vimtex.git
 git@github.com:Valloric/YouCompleteMe.git
-git@github.com/ross/requests-futures
-git@github.com/Valloric/ycmd"
+git@github.com:ross/requests-futures
+git@github.com:Valloric/ycmd"
 
 ##########
 
@@ -42,6 +42,8 @@ cd $dir
 echo "...done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
+echo "Moving any existing dotfiles from ~ to $olddir"
+mv ~/.$file ~/dotfiles_old/
 
 for file in $files; do
     if [[ $file == "vimrc" ]]; then
@@ -50,10 +52,11 @@ for file in $files; do
         git clone git://github.com/amix/vimrc.git ~/.vim_runtime
         sh ~/.vim_runtime/install_awesome_vimrc.sh
         echo "Awesome Vim is installed"
-        mkdir ./vim/bundle
+        mkdir ~/.vim/bundle
         echo "Starting to install Vim Plugins"
+        cd ~/.vim/bundle
         for plugin in $vim_plugins; do
-            git clone $plugin ~/.vim/bundle/
+            git clone $plugin
         done
 
         echo "Vim plugins are downloaded, Make sure to configure 'YouCompleteMe'"
@@ -64,8 +67,6 @@ for file in $files; do
         ln -s $dir/teamocil/ ~/.teamocil
     fi
 
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file ~/dotfiles_old/
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 
