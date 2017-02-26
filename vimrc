@@ -70,6 +70,12 @@ execute pathogen#infect()
     set foldlevelstart=10                          " Open up to 10 folds by default/start
     "set foldnestmax=10                          " Display at most up to 10 folds
     set foldmethod=indent                       " Fold based on indent level
+ " }}}
+
+
+" Pasting
+" {{{
+    set pastetoggle=<leader>pp                   " Toggle Pasting with <leader>pp
 " }}}
 
 
