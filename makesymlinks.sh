@@ -67,6 +67,9 @@ for file in $files; do
     if [[ $file == "tmux.conf" ]]; then
         echo "setting up teamocil directory"
         ln -s $dir/teamocil/ ~/.teamocil
+        echo "Setting up tmux gitbar"
+        git clone git@github.com:aurelien-rainone/tmux-gitbar.git ~/.tmux-gitbar
+        ln -s $dir/tmux-gitbar.conf ~/.tmux-gitbar.conf
     fi
 
     echo "Creating symlink to $file in home directory."
