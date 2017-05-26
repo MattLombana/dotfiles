@@ -54,6 +54,8 @@ execute pathogen#infect()
     :autocmd WinEnter * if &buftype ==# 'location' && winnr('$') == 1 | quit | endif
     " Use ctrl + t to open a new tab
     nnoremap <C-t> :call NewTab()<cr>
+    " use tg to switch to the previous tab
+    nnoremap tg :tabprevious<cr>
 " }}}
 
 
