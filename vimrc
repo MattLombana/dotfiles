@@ -280,6 +280,8 @@ execute pathogen#infect()
     let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode $*'
     let g:Tex_DefaultTargetFormat = 'pdf'
     let g:Tex_ViewRUle_pdf = 'evince'
+    let g:vimtex_disable_version_warning = 1
+    let g:vimtex_compiler_latexmk = {'callback' : 0}
     set grepprg=grep\ -nH\ $*
 " }}}
 
