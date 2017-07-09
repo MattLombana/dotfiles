@@ -4,7 +4,7 @@
 if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
-j
+
 # User specific environment and startup programs
 
 
