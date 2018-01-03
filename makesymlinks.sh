@@ -62,6 +62,7 @@ for file in $files; do
             git clone $plugin
             echo ""
         done
+        mv ~/.$file ~/dotfiles_old
         echo ""
         echo ""
 

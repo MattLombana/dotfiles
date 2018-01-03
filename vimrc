@@ -151,13 +151,15 @@ execute pathogen#infect()
 
 " Indentation
 " {{{
-    ""set autoindent                              " Copy indentation from current line when starting new line
+    "set autoindent                              " Copy indentation from current line when starting new line
     set copyindent                              " Copy structure of indentation from previous line, ex. comment symbols
     set expandtab                               " <Tab> inserts soft tabstop spaces. use <Ctrl>-V <Tab> to get reatl tabstop
     autocmd FileType make set noexpandtab       " Don't convert tabs to spaces for Makefiles
     ""set tabstop=4                               " Set the number of spaces <Tab> equals to x
     ""set shiftwidth=4                            " Set the number of spaces to use for each auto-indent, ex. >>, <<, commands
     set softtabstop=4                           " Set the number of columns vim uses when you hit <Tab>
+    " Set tabstop to be 4 spaces if the editing file is ml
+    autocmd FileType ml setlocal ts=2 sts=2 sw=2 expandtab
     " Set tabstop to be 2 spaces if the editing file is yaml
     autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
     " Set tabstop to be 2 spaces if the editing file is yml
@@ -271,6 +273,7 @@ execute pathogen#infect()
 " {{{
     " Turn off diagnostics to enable syntastic
     let g:ycm_show_diagnostics_ui = 0
+    let g:ycm_filetype_blacklist = {'tex':0}
 " }}}
 
 
