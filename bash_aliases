@@ -7,8 +7,6 @@ alias main='cd ~'
 alias mian='cd ~'
 alias back='cd -'
 alias user='echo $USER'
-alias todo='~/Program-Files/todo.txt_cli-2.9/todo.sh'
-complete -F _todo todo
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -20,3 +18,6 @@ alias lsa='ls -a'
 alias lsal='ls -al'
 alias lsla='ls -al'
 alias lslah='ls -alh'
+
+# Some useful Commands
+alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'

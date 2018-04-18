@@ -75,9 +75,10 @@ execute pathogen#infect()
  " }}}
 
 
-" Pasting
+" Pasting, and Formatting
 " {{{
     set pastetoggle=<leader>pp                   " Toggle Pasting with <leader>pp
+    "highlight Comment cterm=italic               " Highlight code comments in italics
 " }}}
 
 
