@@ -59,35 +59,70 @@ fi
 # PS1 Color setting
 #
 # Pattern:
-# user@hostname:path$
+# (chroot)user@hostname:path$
 #
 # Colors:
-# +----------------------------------+----------------+--------------------+------------+
-# |                                  |  User Color    |   Hostname Color   | Path Color |
-# +----------------------------------+----------------+--------------------+------------+
-# | Standard user on local machine   |  Green         |   Greeen           | Blue       |
-# | Root user on local machine       |  Red           |   Red              | Blue       |
-# | Standard user on foreign machine |  Blue          |   Blue             | Blue       |
-# | Root user on foreign machine     |  Red           |   Blue             | Blue       |
-# +----------------------------------+----------------+--------------------+------------+
-#
+# +---------------------------+----------+----------------+------------------+
+# |                           |  Chroot  |  User Color    |  Hostname Color  |
+# +---------------------------+----------+----------------+------------------+
+# | Chroot                    |  Yellow  |                |                  |
+# | Standard user (local)     |          |  Green         |                  |
+# | Standard user (ssh)       |          |  Blue          |                  |
+# | Root user (local/ssh)     |          |  Red           |                  |
+# | Local Machine             |          |                |  Green           |
+# | Bare-Metal Machine (ssh)  |          |                |  Purple          |
+# | Virtual Machine (ssh)     |          |                |  Blue            |
+# | Container (ssh)           |          |                |  Orange          |
+# |                           |          |                |                  |
+# +---------------------------+----------+----------------+------------------+
 
-if [[ "$color_prompt" = yes ]] && [[ -n $SSH_CLIENT ]] && [[ $EUID -eq 0 ]]; then # if root and ssh'd in
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;160m\]\u@\[\033[38;5;45m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    # color='\[\033[38;5;160m\]\[\033[48;5;4m\]'
-elif [[ "$color_prompt" = yes ]] && [[ -n $SSH_CLIENT ]]; then #if ssh'd in
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;45m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-elif [[ "$color_prompt" = yes ]] && [[ $EUID -eq 0 ]]; then # if root user
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;160m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    # color='\[\033[38;5;160m\]'
-elif [[ "$color_prompt" = yes ]]; then # regular user
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    # color='\[\033[01;32m\]'
+GREEN="\[\033[01;32m\]"
+RED="\[\033[38;5;160m\]"
+PURPLE="\[\033[38;5;164m\]"
+BLUE="\[\033[38;5;45m\]"
+DARK_BLUE="\[\033[01;34m\]"
+ORANGE="\[\033[38;5;208m\]"
+YELLOW="\[\033[38;5;226m\]"
+RESET="\[\033[00m\]"
+
+if [[ "$color_prompt" = yes ]]; then
+    # If SSH'd In
+    if [[ -n $SSH_CLIENT ]]; then
+        USER_COLOR="$BLUE"
+
+        # VirtualMachine
+        if [[ $(cat /proc/cpuinfo | grep hypervisor) ]]; then
+            HOSTNAME_COLOR="$BLUE"
+
+        # Container
+        elif [[ $(grep 'container' proc/1/cgroup) ]]; then
+            HOSTNAME_COLOR="$ORANGE"
+
+        # Bare-Metal Machine
+        else
+            HOSTNAME_COLOR="$PURPLE"
+        fi
+
+    # If on a local machine
+    else
+        USER_COLOR="$GREEN"
+        HOSTNAME_COLOR="$GREEN"
+    fi
+
+    # If Root, use a red username
+    if [[ $EUID -eq 0 ]]; then
+        USER_COLOR="$RED"
+    fi
+
+    PS1="${YELLOW}${debian_chroot:+($debian_chroot)}${USER_COLOR}\u@${HOSTNAME_COLOR}\h${RESET}:${DARK_BLUE}\w${RESET}\$ "
+
+# Not a color prompt
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
 fi
 
-unset color_prompt force_color_prompt
+unset color_prompt force_color_prompt  GREEN RED PURPLE BLUE DARK_BLUE ORANGE YELLOW RESET USER_COLOR HOSTNAME_COLOR
+
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
