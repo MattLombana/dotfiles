@@ -7,7 +7,7 @@
 ########## Variables
 dir=~/dotfiles                          # dotfiles directory
 olddir=~/dotfiles_old                   # old dotfiles backup directory
-files="bash_profile bashrc vimrc bash_aliases tmux.conf"       # list of files/folders to symlink in homedir
+files="bash_profile bashrc vimrc bash_aliases tmux.conf gdbinit"       # list of files/folders to symlink in homedir
 odd_files="flake8"                      # list of files that need to be handled individually
 vim_plugins="
 https://github.com/davidhalter/jedi-vim.git
@@ -65,16 +65,18 @@ for file in $files; do
         mv ~/.$file ~/dotfiles_old
         echo ""
         echo ""
-
         echo "Vim plugins are downloaded, Make sure to configure 'YouCompleteMe'"
-    fi
 
-    if [[ $file == "tmux.conf" ]]; then
+    elif [[ $file == "tmux.conf" ]]; then
         echo "setting up teamocil directory"
         ln -s $dir/teamocil/ ~/.teamocil
         echo "Setting up tmux gitbar"
         git clone https://github.com/aurelien-rainone/tmux-gitbar.git ~/.tmux-gitbar
         ln -s $dir/tmux-gitbar.conf ~/.tmux-gitbar.conf
+
+    elif [[ $file == "gdbinit" ]]; then
+        echo "installing gdbinit config"
+        git clone https://github.com/pwndbg/pwndbg.git ~/.gdb/pwndbg
     fi
 
     echo "Creating symlink to $file in home directory."
@@ -89,5 +91,6 @@ for file in $odd_files; do
         mv ~/.config/flake8 $olddir/flake8
         ln -s $dir/flake8 ~/.config/flake8
     fi
+
 
 done
