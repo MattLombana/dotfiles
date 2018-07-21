@@ -19,9 +19,15 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+# Save the date and time
+HISTTIMEFORMAT='%F %T '
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+
+# Save history after running each command
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
