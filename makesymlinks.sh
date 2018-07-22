@@ -9,6 +9,7 @@ dir=~/dotfiles                          # dotfiles directory
 olddir=~/dotfiles_old                   # old dotfiles backup directory
 files="bash_profile bashrc vimrc bash_aliases tmux.conf gdbinit"       # list of files/folders to symlink in homedir
 odd_files="flake8"                      # list of files that need to be handled individually
+
 vim_plugins="
 https://github.com/davidhalter/jedi-vim.git
 https://github.com/davidhalter/jedi.git
@@ -45,7 +46,7 @@ echo "...done"
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
 
 for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
+    echo "Moving existing $file from ~ to $olddir"
     mv ~/.$file ~/dotfiles_old/
 
     if [[ $file == "vimrc" ]]; then
@@ -77,6 +78,8 @@ for file in $files; do
     elif [[ $file == "gdbinit" ]]; then
         echo "installing gdbinit config"
         git clone https://github.com/pwndbg/pwndbg.git ~/.gdb/pwndbg
+        echo "Running pwndbg setup script"
+        ~/.gdb/pwndbg/setup.sh
     fi
 
     echo "Creating symlink to $file in home directory."
@@ -85,6 +88,7 @@ for file in $files; do
 done
 
 for file in $odd_files; do
+    # Cannot do flake8 with normal files, as it goes in .config
     if [[ $file == "flake8" ]]; then
         echo "installing flake8 config"
         mkdir ~/.config
