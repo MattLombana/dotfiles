@@ -287,6 +287,12 @@ execute pathogen#infect()
     let g:vimtex_disable_version_warning = 1
     let g:vimtex_compiler_latexmk = {'callback' : 0}
     set grepprg=grep\ -nH\ $*
+
+     "LaTeX (rubber) macro for compiling
+     nnoremap <leader>c :w<CR>:!pdflatex %<CR>
+
+     " View PDF macro; '%:r' is current file's root (base) name.
+     nnoremap <leader>v :!evince %:r.pdf &<CR><CR>
 " }}}
 
 
