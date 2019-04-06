@@ -292,7 +292,7 @@ execute pathogen#infect()
      nnoremap <leader>c :w<CR>:!pdflatex %<CR>
 
      " View PDF macro; '%:r' is current file's root (base) name.
-     nnoremap <leader>v :!evince %:r.pdf &<CR><CR>
+     nnoremap <leader>v :!open %:r.pdf &<CR><CR>
 " }}}
 
 

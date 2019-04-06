@@ -82,7 +82,7 @@ fi
 # |                           |          |                |                  |
 # +---------------------------+----------+----------------+------------------+
 
-GREEN="\[\033[01;32m\]"
+GREEN="\[\033[1;32m\]"
 RED="\[\033[38;5;160m\]"
 PURPLE="\[\033[38;5;164m\]"
 BLUE="\[\033[38;5;45m\]"
@@ -149,6 +149,11 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+
+else
+    export CLICOLOR=YES
+    export LSCOLORS="ExGxxxxxCxxxxxabagecec"
+    alias ls='ls -G'
 fi
 
 # colored GCC warnings and errors
