@@ -21,14 +21,10 @@ https://github.com/mbbill/undotree.git
 https://github.com/panozzaj/vim-autocorrect.git
 https://github.com/alvan/vim-closetag.git
 https://github.com/xolox/vim-easytags.git
-https://github.com/airblade/vim-gitgutter.git
-https://github.com/jamessan/vim-gnupg.git
-https://github.com/severin-lemaignan/vim-minimap.git
 https://github.com/xolox/vim-misc.git
 https://github.com/jistr/vim-nerdtree-tabs.git
 https://github.com/lervag/vimtex.git
 https://github.com/Valloric/YouCompleteMe.git
-https://github.com/ross/requests-futures
 https://github.com/Valloric/ycmd"
 
 ##########
