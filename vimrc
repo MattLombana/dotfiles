@@ -288,9 +288,6 @@ execute pathogen#infect()
     let g:vimtex_compiler_latexmk = {'callback' : 0}
     set grepprg=grep\ -nH\ $*
 
-     "LaTeX (rubber) macro for compiling
-     nnoremap <leader>c :w<CR>:!pdflatex %<CR>
-
      " View PDF macro; '%:r' is current file's root (base) name.
      nnoremap <leader>v :!open %:r.pdf &<CR><CR>
 " }}}
@@ -343,6 +340,16 @@ execute pathogen#infect()
     inoremap <C-l> <esc>:call NumberToggle()<cr>i
 " }}}
 
+
+
+" Compilation
+" {{{
+    autocmd FileType tex set makeprg=pdflatex\ %
+    autocmd FileType javascript set makeprg=node\ %
+    autocmd FileType python set makeprg=python\ %
+    autocmd FileType sh set makeprg=sh\ %
+    nnoremap <leader>c :make<CR>
+" }}}
 
 " Number Toggle Function
 " {{{
