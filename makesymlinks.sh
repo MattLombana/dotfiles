@@ -5,8 +5,8 @@
 ############################
 
 ########## Variables
-dir=~/dotfiles                          # dotfiles directory
-olddir=~/dotfiles_old                   # old dotfiles backup directory
+dir=~/.dotfiles                          # dotfiles directory
+olddir=$dir/dotfiles_old                   # old dotfiles backup directory
 files="bash_profile bashrc vimrc bash_aliases tmux.conf gdbinit"       # list of files/folders to symlink in homedir
 odd_files="flake8"                      # list of files that need to be handled individually
 
@@ -43,7 +43,7 @@ echo "...done"
 
 for file in $files; do
     echo "Moving existing $file from ~ to $olddir"
-    mv ~/.$file ~/dotfiles_old/
+    mv ~/.$file $olddir/
 
     if [[ $file == "vimrc" ]]; then
         echo "starting to install Awesome Vim"
@@ -59,7 +59,7 @@ for file in $files; do
             git clone $plugin
             echo ""
         done
-        mv ~/.$file ~/dotfiles_old
+        mv ~/.$file $oldir/
         echo ""
         echo ""
         echo "Vim plugins are downloaded, Make sure to configure 'YouCompleteMe'"

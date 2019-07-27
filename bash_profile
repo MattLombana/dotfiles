@@ -14,3 +14,5 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/QEMU/Programs/
 export PATH
 
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
