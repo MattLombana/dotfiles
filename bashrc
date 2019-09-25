@@ -156,6 +156,11 @@ else
     alias ls='ls -G'
 fi
 
+# Run Tmux upon a bash shell automatically
+# If not running interactively, do not do anything
+#[[ $- != *i* ]] && return
+#[[ -z "$TMUX" ]] && exec tmux
+
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
@@ -199,6 +204,10 @@ function set-title() {
   fi
   TITLE="\[\e]2;$*\a\]"
   PS1=${ORIG}${TITLE}
+}
+
+function iterm-title() {
+    echo -ne "\033]0;"$*"\007"
 }
 
 # Teamocil autocompletion
