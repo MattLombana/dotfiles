@@ -20,14 +20,20 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 # Save the date and time
-HISTTIMEFORMAT='%F %T '
+HISTTIMEFORMAT='%F %T | '
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
 # Save history after running each command
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+# history -a - save command to global history
+# history -c - update count of global history
+# history -r - read global history into current session
+# Each of these comes from lesmana's answer on stack exchange:
+# https://unix.stackexchange.com/questions/1288/preserve-bash-history-in-multiple-terminal-windows
+#export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
