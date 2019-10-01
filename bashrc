@@ -184,13 +184,13 @@ if [[ -z "$TMUX" ]]; then
     read -r ID
     if [[ -z "$ID" ]]; then
         #exec tmux
-        tmux
+        exec tmux
     elif ! [[ "$SESSIONS" == *"$ID"* ]]; then
         #exec tmux new-session -s "$ID"
-        tmux new-session -s "$ID"
+        exec tmux new-session -s "$ID"
     else
         #exec tmux attach-session -t "$ID"
-        tmux attach-session -t "$ID"
+        exec tmux attach-session -t "$ID"
     fi
 fi
 trap 2
