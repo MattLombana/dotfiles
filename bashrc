@@ -167,14 +167,43 @@ fi
 #[[ $- != *i* ]] && return
 #[[ -z "$TMUX" ]] && exec tmux
 # TMUX
-if [[ -z "$TMUX" ]] ;then
-    ID="$( tmux ls | grep -vm1 attached | cut -d: -f1 )" # get the id of a deattached session
-    if [[ -z "$ID" ]] ;then # if not available create a new one
-        tmux new-session
+#if [[ -z "$TMUX" ]] ;then
+    #ID="$( tmux ls | grep -vm1 attached | cut -d: -f1 )" # get the id of a deattached session
+    #if [[ -z "$ID" ]] ;then # if not available create a new one
+        #tmux new-session
+    #else
+        #tmux attach-session -t "$ID" # if available attach to it
+    #fi
+#fi
+
+trap '' 2
+if [[ -z "$TMUX" ]]; then
+    SESSIONS="$(tmux ls | cut -d ':' -f 1)"
+    echo $SESSIONS
+    echo "Which session would you like to attach to? (Enter a new name, or press enter for a new session)"
+    read -r ID
+    if [[ -z "$ID" ]]; then
+        #exec tmux
+        tmux
+    elif ! [[ "$SESSIONS" == *"$ID"* ]]; then
+        #exec tmux new-session -s "$ID"
+        tmux new-session -s "$ID"
     else
-        tmux attach-session -t "$ID" # if available attach to it
+        #exec tmux attach-session -t "$ID"
+        tmux attach-session -t "$ID"
     fi
 fi
+trap 2
+
+
+function get-logging-status() {
+    log_status="$(tmux show-option -gqv @$(tmux display-message -p '#{session_name}_#{window_index}_#{pane_index}'))"
+    if [[ -z $log_status ]]; then
+        echo 'Not Logging'
+    else
+        echo $log_status
+    fi
+}
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'

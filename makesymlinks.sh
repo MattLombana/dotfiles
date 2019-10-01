@@ -70,6 +70,11 @@ for file in $files; do
         echo "Setting up tmux gitbar"
         git clone https://github.com/aurelien-rainone/tmux-gitbar.git ~/.tmux-gitbar
         ln -s $dir/tmux-gitbar.conf ~/.tmux-gitbar.conf
+        echo "Setting up Tmux Plugin Mangager"
+        mkdir -p ~/.tmux/plugins
+        mkdir -p ~/.tmux/logs
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 
     elif [[ $file == "gdbinit" ]]; then
         echo "installing gdbinit config"
