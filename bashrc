@@ -180,18 +180,24 @@ trap '' 2
 if [[ -z "$TMUX" ]]; then
     SESSIONS="$(tmux ls | cut -d ':' -f 1)"
     echo $SESSIONS
-    echo "Which session would you like to attach to? (Enter a new name, or press enter for a new session)"
-    read -r ID
-    if [[ -z "$ID" ]]; then
-        #exec tmux
-        exec tmux
-    elif ! [[ "$SESSIONS" == *"$ID"* ]]; then
-        #exec tmux new-session -s "$ID"
-        exec tmux new-session -s "$ID"
+    if [[ -z "$SESSIONS" ]]; then
+        TMUXCOMMAND="tmux"
     else
-        #exec tmux attach-session -t "$ID"
-        exec tmux attach-session -t "$ID"
+        echo "Which session would you like to attach to? (Enter a new name, or press enter for a new session)"
+        read -r ID
+        if [[ -z "$ID" ]]; then
+            #exec tmux
+            TMUXCOMMAND="tmux"
+        elif ! [[ "$SESSIONS" == *"$ID"* ]]; then
+            #exec tmux new-session -s "$ID"
+            tmux new-session -s "$ID"
+            TMUXCOMMAND="tmux new-session -s $ID"
+        else
+            #exec tmux attach-session -t "$ID"
+            TMUXCOMMAND="tmux attach-session -t $ID"
+        fi
     fi
+    $TMUXCOMMAND
 fi
 trap 2
 
