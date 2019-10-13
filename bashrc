@@ -197,7 +197,7 @@ if [[ -z "$TMUX" ]]; then
             TMUXCOMMAND="tmux attach-session -t $ID"
         fi
     fi
-    $TMUXCOMMAND
+    exec $TMUXCOMMAND
 fi
 trap 2
 
