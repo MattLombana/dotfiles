@@ -7,7 +7,7 @@ alias main='cd ~'
 alias mian='cd ~'
 alias back='cd -'
 alias user='echo $USER'
-alias lessc='less -R'
+alias less='less -R'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -25,3 +25,6 @@ alias t='tmux new -s '
 
 # Some useful Commands
 alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
+
+# Praetorian Specific Aliases
+alias run_owl='eval $(ssh-agent) && ssh-add && source ~/.venv/owl/bin/activate && owl'

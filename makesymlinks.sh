@@ -7,7 +7,7 @@
 ########## Variables
 dir=~/.dotfiles                          # dotfiles directory
 olddir=$dir/dotfiles_old                   # old dotfiles backup directory
-files="bash_profile bashrc vimrc bash_aliases tmux.conf gdbinit"       # list of files/folders to symlink in homedir
+files="bash_profile bashrc vimrc aliases tmux.conf gdbinit zshrc"       # list of files/folders to symlink in homedir
 odd_files="flake8"                      # list of files that need to be handled individually
 
 vim_plugins="
@@ -81,7 +81,12 @@ for file in $files; do
         git clone https://github.com/pwndbg/pwndbg.git ~/.gdb/pwndbg
         echo "Running pwndbg setup script"
         ~/.gdb/pwndbg/setup.sh
+
+    elif [[ $file == "zshrc" ]]; then
+        echo "Installing Oh-My-Zsh"
+        sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     fi
+
 
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
