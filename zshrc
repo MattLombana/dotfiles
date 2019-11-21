@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/mlombana/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -344,8 +344,12 @@ setopt glob_dots                # include dotfiles in globbing
 setopt print_exit_value         # print return value if non-zero
 unsetopt beep                   # no bell on error
 unsetopt bg_nice                # no lower priority for background jobs
-unsetopt clobber                # must use >| to truncate existing files
+    # unsetopt clobber                # must use >| to truncate existing files (wont let `>` overwrite)
 unsetopt hist_beep              # no bell on error in history
 unsetopt hup                    # no hup signal at shell exit
 unsetopt list_beep              # no bell on ambiguous completion
 unsetopt rm_star_silent         # ask for confirmation for `rm *' or `rm path/*'
+
+
+bindkey \^U backward-kill-line  # Stop deleting the whole line with Ctrl-U
+
