@@ -255,30 +255,30 @@ else
 fi
 
 # Run Tmux upon a shell automatically
-trap '' 2
-if [[ -z "$TMUX" ]]; then
-    SESSIONS="$(tmux ls | cut -d ':' -f 1)"
-    echo $SESSIONS
-    if [[ -z "$SESSIONS" ]]; then
-        TMUXCOMMAND="tmux"
-    else
-        echo "Which session would you like to attach to? (Enter a new name, or press enter for a new session)"
-        read -r ID
-        if [[ -z "$ID" ]]; then
-            #exec tmux
-            TMUXCOMMAND="tmux"
-        elif ! [[ "$SESSIONS" == *"$ID"* ]]; then
-            #exec tmux new-session -s "$ID"
-            tmux new-session -s "$ID"
-            TMUXCOMMAND="tmux new-session -s $ID"
-        else
-            #exec tmux attach-session -t "$ID"
-            TMUXCOMMAND="tmux attach-session -t $ID"
-        fi
-    fi
-    exec $TMUXCOMMAND
-fi
-trap 2
+#trap '' 2
+#if [[ -z "$TMUX" ]]; then
+    #SESSIONS="$(tmux ls | cut -d ':' -f 1)"
+    #echo $SESSIONS
+    #if [[ -z "$SESSIONS" ]]; then
+        #TMUXCOMMAND="tmux"
+    #else
+        #echo "Which session would you like to attach to? (Enter a new name, or press enter for a new session)"
+        #read -r ID
+        #if [[ -z "$ID" ]]; then
+            ##exec tmux
+            #TMUXCOMMAND="tmux"
+        #elif ! [[ "$SESSIONS" == *"$ID"* ]]; then
+            ##exec tmux new-session -s "$ID"
+            #tmux new-session -s "$ID"
+            #TMUXCOMMAND="tmux new-session -s $ID"
+        #else
+            ##exec tmux attach-session -t "$ID"
+            #TMUXCOMMAND="tmux attach-session -t $ID"
+        #fi
+    #fi
+    ## $TMUXCOMMAND
+#fi
+#trap 2
 
 
 function get-logging-status() {
@@ -353,3 +353,6 @@ unsetopt rm_star_silent         # ask for confirmation for `rm *' or `rm path/*'
 
 bindkey \^U backward-kill-line  # Stop deleting the whole line with Ctrl-U
 
+
+# ZSH Tmux plugin settings
+ZSH_TMUX_AUTOCONNECT=false
