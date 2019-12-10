@@ -25,6 +25,3 @@ alias t='tmux new -s '
 
 # Some useful Commands
 alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
-
-# Praetorian Specific Aliases
-alias run_owl='eval $(ssh-agent) && ssh-add && source ~/.venv/owl/bin/activate && owl'
