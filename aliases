@@ -20,6 +20,9 @@ alias lsal='ls -al'
 alias lsla='ls -al'
 alias lslah='ls -alh'
 
+# Get rid of the awful BSD nc
+alias nc='netcat'
+
 # Some Tmux Aliases
 alias t='tmux new -s '
 
