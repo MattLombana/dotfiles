@@ -104,3 +104,5 @@ for file in $odd_files; do
 
 
 done
+
+echo "Don't forget to comment out the following line in the oh-my-zsh tmux plugin 'alias tmux=_zsh_tmux_plugin_run'"
