@@ -3,6 +3,12 @@
 This repo is heavily influenced by other dotfiles repositories on github.
 It has several main parts to it:
 
+## Quickstart
+
+```
+curl https://raw.githubusercontent.com/MattLombana/dotfiles/master/autostart.sh | bash
+```
+
 ## bashrc
 
     Contains my bash configurations, without my bash aliases
