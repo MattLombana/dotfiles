@@ -107,7 +107,7 @@ if [[ "$color_prompt" = yes ]]; then
             HOSTNAME_COLOR="$BLUE"
 
         # Container
-        elif [[ $(grep 'container' proc/1/cgroup) ]]; then
+        elif [[ $(grep 'container' /proc/1/cgroup) ]]; then
             HOSTNAME_COLOR="$ORANGE"
 
         # Bare-Metal Machine

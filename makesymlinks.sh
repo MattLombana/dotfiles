@@ -105,4 +105,5 @@ for file in $odd_files; do
 
 done
 
-echo "Don't forget to comment out the following line in the oh-my-zsh tmux plugin 'alias tmux=_zsh_tmux_plugin_run'"
+# comment out the following line in the oh-my-zsh tmux plugin 'alias tmux=_zsh_tmux_plugin_run'"
+sed -i 's/alias tmux=_zsh_tmux_plugin_run/#alias tmux=_zsh_tmux_plugin_run/g' ~/.oh-my-zsh/plugins/tmux/tmux.plugin.zsh
