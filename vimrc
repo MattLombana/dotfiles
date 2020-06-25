@@ -64,7 +64,8 @@ execute pathogen#infect()
     set number                                  " Display line numbers
     set relativenumber                          " Display relative line numbers
     ""set ruler                                   " Display cursor position
-    set colorcolumn=101                         " Display a line at 101 characters
+    set nojoinspaces                            " Prevent double spaces after a period
+    set colorcolumn=80,100                         " Display a line at 100 characters
     " Sets the color column to grey, default is red
     highlight ColorColumn ctermbg=0 guibg=lightgrey
     set showcmd                                 " Display commands at the bottom of the screen
@@ -72,13 +73,18 @@ execute pathogen#infect()
     set foldlevelstart=10                          " Open up to 10 folds by default/start
     "set foldnestmax=10                          " Display at most up to 10 folds
     set foldmethod=indent                       " Fold based on indent level
- " }}}
+    "set textwidth=100                           " Set the default text width of 80
+    autocmd BufReadPre, *.md setlocal textwidth=80
+"}}}
 
 
-" Pasting, and Formatting
+" Copy, Pasting, and Formatting
 " {{{
     set pastetoggle=<leader>pp                   " Toggle Pasting with <leader>pp
     "highlight Comment cterm=italic               " Highlight code comments in italics
+    noremap <leader>y "*y                       " Copy highlights to the clipboard
+    noremap <leader>p "*p                       " Paste from clipboard
+    noremap <leader>Y gg"*yG                    " Copy the whole buffer to the clipboard
 " }}}
 
 
@@ -167,6 +173,8 @@ execute pathogen#infect()
     autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab
     " Set tabstop to be 4 spaces if the editing file is tex
     autocmd FileType tex setlocal ts=4 sts=4 sw=4 expandtab
+    " Set tabstop to be 2 spaces if the editing file is json
+    autocmd FileType json setlocal ts=2 sts=2 sw=2 expandtab
 " }}}
 
 
