@@ -73,7 +73,6 @@ plugins=(
     copyfile
     docker
     extract
-    git
     osx
     pip
     python
