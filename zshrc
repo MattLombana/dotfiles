@@ -267,10 +267,13 @@ if [[ -z "$TMUX" ]]; then
         tmux
         echo '1'
     else
-        echo "Which session would you like to attach to? (Enter a new name, or press enter for a new session)"
+        echo "Which session would you like to attach to? (Enter a new name, or press enter for a new session, or 'exit' to exit)"
         read -r ID
         if [[ -z "$ID" ]]; then
             tmux
+        elif [[ "exit" == *"$ID"* ]]; then
+            trap 2
+            exit
         elif ! [[ "$SESSIONS" == *"$ID"* ]]; then
             tmux new-session -s "$ID"
         else
