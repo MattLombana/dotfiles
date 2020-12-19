@@ -334,6 +334,17 @@ compctl -g '~/.teamocil/*(:t:r)' teamocil
 # Failsafe for moving files (prevent accidental overwritting)
 alias mv="mv -i"
 
+# Ubuntu function for creating a quick Ubuntu container
+ubuntu() {
+    if [[ $# -eq 0 ]]; then
+        printf "Usage: ubuntu dirName\n    dirName: \"$PWD\" will be mounted to \"/dirName\"\n"
+        return
+    fi
+    docker run --rm -it -v "$(pwd)":"/$1" ubuntu:latest /bin/bash
+}
+
+
+
 watch=all                       # watch all logins
 logcheck=30                     # every 30 seconds
 WATCHFMT="%n from %M has %a tty%l at %T %W"
@@ -359,3 +370,4 @@ bindkey \^U backward-kill-line  # Stop deleting the whole line with Ctrl-U
 
 # ZSH Tmux plugin settings
 ZSH_TMUX_AUTOCONNECT=false
+DISABLE_AUTO_TITLE=true

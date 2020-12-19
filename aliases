@@ -20,11 +20,18 @@ alias lsal='ls -al'
 alias lsla='ls -al'
 alias lslah='ls -alh'
 
+# Vim File Aliases
+alias tfoo='vim /tmp/foo'
+alias tbar='vim /tmp/bar'
+
 # Get rid of the awful BSD nc
 alias nc='netcat'
 
 # Some Tmux Aliases
 alias t='tmux new -s '
+alias teamocil='teamocil --here'
 
 # Some useful Commands
 alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
+
+alias getip='ifconfig | grep inet'
