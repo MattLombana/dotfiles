@@ -1,0 +1,23 @@
+# Simple Four Pane Window
+#
+# +------------------+------------------+
+# | (1)              | (2)              |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# +------------------+------------------+
+# | (3)              | (4) <focus here> |
+# |                  |                  |
+# |                  |                  |
+# |                  |                  |
+# +------------------+------------------+
+#
+windows:
+  - name: Four Panes
+    root: ./
+    layout: tiled
+    panes:
+      - ssh rancher-k3s-node-0
+      - ssh rancher-k3s-node-1
+      - ssh rancher-k3s-datastore
+      - ssh rancher-k3s-loadbalancer

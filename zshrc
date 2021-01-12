@@ -231,7 +231,7 @@ if [[ "$color_prompt" = yes ]]; then
         USER_COLOR="$RED"
     fi
 
-    PROMPT="${YELLOW}${debian_chroot:+($debian_chroot)}${USER_COLOR}%n@${HOSTNAME_COLOR}%m${RESET}:${DARK_BLUE}%~${RESET}%(!.#.$) "
+    PROMPT="${YELLOW}${debian_chroot:+($debian_chroot)}${USER_COLOR}%n@${HOSTNAME_COLOR}%m${RESET}:${DARK_BLUE}%~${RESET}%f%(!.#.$) "
 
 # Not a color prompt
 else
@@ -336,13 +336,25 @@ alias mv="mv -i"
 
 # Ubuntu function for creating a quick Ubuntu container
 ubuntu() {
-    if [[ $# -eq 0 ]]; then
-        printf "Usage: ubuntu dirName\n    dirName: \"$PWD\" will be mounted to \"/dirName\"\n"
-        return
-    fi
-    docker run --rm -it -v "$(pwd)":"/$1" ubuntu:latest /bin/bash
+    docker run --rm -it -v "$(pwd):/host" -w /host ubuntu:latest /bin/bash
 }
 
+docker-pwd() {
+    docker run --rm -it -v "$(pwd):/host" -w /host "$@"
+}
+
+realpath() {
+    OURPWD=$PWD
+    cd "$(dirname "$1")"
+    LINK=$(readlink "(basename "$1")")
+    while [ "$LINK" ]; do
+        cd "$(dirname "$LINK")"
+        LINK=$(readlink "(basename "$1")")
+    done
+    REALPATH="$PWD/$(basename "$1")"
+    cd "$OURPWD"
+    echo "$REALPATH"
+}
 
 
 watch=all                       # watch all logins
