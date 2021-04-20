@@ -7,25 +7,32 @@
 ########## Variables
 dir=~/.dotfiles                          # dotfiles directory
 olddir=$dir/dotfiles_old                   # old dotfiles backup directory
-files="bash_profile bashrc vimrc aliases tmux.conf gdbinit zshrc"       # list of files/folders to symlink in homedir
+files="bash_profile bashrc aliases tmux.conf gdbinit zshrc"       # list of files/folders to symlink in homedir
 odd_files="flake8"                      # list of files that need to be handled individually
 
 vim_plugins="
-https://github.com/davidhalter/jedi-vim.git
-https://github.com/davidhalter/jedi.git
-https://github.com/scrooloose/nerdcommenter.git
-https://github.com/trusktr/seti.vim
-https://github.com/majutsushi/tagbar.git
-https://github.com/csexton/trailertrash.vim.git
-https://github.com/mbbill/undotree.git
-https://github.com/panozzaj/vim-autocorrect.git
-https://github.com/alvan/vim-closetag.git
-https://github.com/xolox/vim-easytags.git
-https://github.com/xolox/vim-misc.git
+https://github.com/jiangmiao/auto-pairs.git
+https://github.com/MarcWeber/vim-addon-mw-utils.git
 https://github.com/jistr/vim-nerdtree-tabs.git
+https://github.com/panozzaj/vim-autocorrect.git
+https://github.com/itchyny/lightline.vim.git
+https://github.com/alvan/vim-closetag.git
+https://github.com/majutsushi/tagbar.git
+https://github.com/garbas/vim-snipmate.git
+https://github.com/nvie/vim-flake8.git
+https://github.com/godlygeek/tabular.git
+https://github.com/csexton/trailertrash.vim.git
+https://github.com/tomtom/tlib_vim.git
+https://github.com/xolox/vim-misc.git
+https://github.com/pangloss/vim-javascript.git
+https://github.com/plasticboy/vim-markdown.git
 https://github.com/lervag/vimtex.git
-https://github.com/Valloric/YouCompleteMe.git
-https://github.com/Valloric/ycmd"
+https://github.com/scrooloose/nerdcommenter.git
+https://github.com/honza/vim-snippets.git
+https://github.com/vim-scripts/nginx.vim.git
+https://github.com/preservim/nerdtree.git
+https://github.com/Vimjas/vim-python-pep8-indent.git
+"
 
 ##########
 
@@ -44,25 +51,6 @@ echo "...done"
 for file in $files; do
     echo "Moving existing $file from ~ to $olddir"
     mv ~/.$file $olddir/
-
-    if [[ $file == "vimrc" ]]; then
-        echo "starting to install Awesome Vim"
-        # install awesome vim (.vimrc)
-        git clone https://github.com/amix/vimrc.git ~/.vim_runtime
-        sh ~/.vim_runtime/install_awesome_vimrc.sh
-        echo "Awesome Vim is installed"
-        mkdir ~/.vim
-        mkdir ~/.vim/bundle
-        echo "Starting to install Vim Plugins"
-        cd ~/.vim/bundle
-        for plugin in $vim_plugins; do
-            git clone $plugin
-            echo ""
-        done
-        mv ~/.$file $oldir/
-        echo ""
-        echo ""
-        echo "Vim plugins are downloaded, Make sure to configure 'YouCompleteMe'"
 
     elif [[ $file == "tmux.conf" ]]; then
         echo "setting up teamocil directory"
@@ -104,6 +92,21 @@ for file in $odd_files; do
 
 
 done
+
+echo "Linking vim dir"
+ln -s $dir/vim ~/.vim
+echo "Installing Vim Plugins"
+cd ~/.vim/bundle
+for plugin in $vim_plugins; do
+	git clone $plugin
+	echo ""
+done
+mv ~/.$file $oldir/
+echo ""
+echo ""
+echo "Vim plugins are downloaded..."
+
+
 
 # comment out the following line in the oh-my-zsh tmux plugin 'alias tmux=_zsh_tmux_plugin_run'"
 sed -i 's/alias tmux=_zsh_tmux_plugin_run/#alias tmux=_zsh_tmux_plugin_run/g' ~/.oh-my-zsh/plugins/tmux/tmux.plugin.zsh
