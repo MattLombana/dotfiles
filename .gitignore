@@ -2,3 +2,8 @@
 
 # Ignore old dotfiles directory
 dotfiles_old/
+
+vim/.temp_dirs
+vim/bundle
+vim/autoload/pathogen.vim
+
