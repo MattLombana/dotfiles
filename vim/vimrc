@@ -317,11 +317,11 @@ set tabline=%!CustomizedTabLine()
 " Undo and Backup
 " {{{
     set undofile                                " Enable persistent undo commands for a file
-    set undodir=~/.vim/temp_dirs/undodir        " The directory to save undo files
+    set undodir=~/.vim/.temp_dirs/undo//        " The directory to save undo files
     set undolevels=1000                         " The number of undo's to save (max=1000)
     set undoreload=10000                        " The number of undo's to reload upon open (max=10000)
-    set backupdir=~/.vim/backup/                " The directory for vim to backup to
-    set directory=~/.vim/backup/                " Set the directory to save vim files
+    set backupdir=~/.vim/.temp_dirs/backup//    " The directory for vim to backup to
+    set directory=~/.vim/.temp_dirs/swap//      " Set the directory to save vim files
 " }}}
 
 " NERDTree Settings

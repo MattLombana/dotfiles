@@ -32,6 +32,7 @@ https://github.com/honza/vim-snippets.git
 https://github.com/vim-scripts/nginx.vim.git
 https://github.com/preservim/nerdtree.git
 https://github.com/Vimjas/vim-python-pep8-indent.git
+https://github.com/maxbrunsfeld/vim-yankstack.git
 "
 
 ##########
