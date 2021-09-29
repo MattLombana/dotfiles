@@ -327,6 +327,10 @@ function iterm-title() {
     echo -ne "\033]0;"$*"\007"
 }
 
+function docker-remove-exited() {
+    docker rm $(docker ps -a -f status=exited -q)
+}
+
 # Teamocil autocompletion
 compctl -g '~/.teamocil/*(:t:r)' teamocil
 
@@ -339,8 +343,21 @@ ubuntu() {
     docker run --rm -it -v "$(pwd):/host" -w /host ubuntu:latest /bin/bash
 }
 
+
+python2-docker() {
+    docker run --rm -it -v "$(pwd):/host" -w /host python:2 /bin/bash
+}
+
+python3-docker() {
+    docker run --rm -it -v "$(pwd):/host" -w /host python:3 /bin/bash
+}
+
 docker-pwd() {
     docker run --rm -it -v "$(pwd):/host" -w /host "$@"
+}
+
+msfvenom() {
+    docker run --rm -it -v "${PWD}:/data" metasploitframework/metasploit-framework ./msfvenom "$@"
 }
 
 realpath() {
