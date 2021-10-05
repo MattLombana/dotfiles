@@ -53,7 +53,7 @@ for file in $files; do
     echo "Moving existing $file from ~ to $olddir"
     mv ~/.$file $olddir/
 
-    elif [[ $file == "tmux.conf" ]]; then
+    if [[ $file == "tmux.conf" ]]; then
         echo "setting up teamocil directory"
         ln -s $dir/teamocil/ ~/.teamocil
         echo "Setting up tmux gitbar"
