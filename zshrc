@@ -360,6 +360,10 @@ msfvenom() {
     docker run --rm -it -v "${PWD}:/data" metasploitframework/metasploit-framework ./msfvenom "$@"
 }
 
+msfconsole() {
+    docker run --rm -it -v "${PWD}:/data" metasploitframework/metasploit-framework ./msfconsole
+}
+
 realpath() {
     OURPWD=$PWD
     cd "$(dirname "$1")"
