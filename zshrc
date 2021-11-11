@@ -73,7 +73,7 @@ plugins=(
     copyfile
     docker
     extract
-    osx
+    macos
     pip
     python
     tmux
@@ -376,6 +376,10 @@ realpath() {
     cd "$OURPWD"
     echo "$REALPATH"
 }
+
+#Pretty print csv output
+#example: cat outputs.csv | csv
+alias csv="sed 's/,/ ,/g' | column -t -s,"
 
 
 watch=all                       # watch all logins
