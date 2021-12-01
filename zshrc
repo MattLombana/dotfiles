@@ -343,7 +343,6 @@ ubuntu() {
     docker run --rm -it -v "$(pwd):/host" -w /host ubuntu:latest /bin/bash
 }
 
-
 python2-docker() {
     docker run --rm -it -v "$(pwd):/host" -w /host python:2 /bin/bash
 }
@@ -362,6 +361,10 @@ msfvenom() {
 
 msfconsole() {
     docker run --rm -it -v "${PWD}:/data" metasploitframework/metasploit-framework ./msfconsole
+}
+
+docker-remove-exited() {
+    docker rm $(docker ps -a -f status=exited -q)
 }
 
 realpath() {

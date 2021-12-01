@@ -26,6 +26,7 @@ endtry
 ""filetype plugin on
 " {{{
 execute pathogen#infect()
+let g:loaded_vimballPlugin=1
 " }}}
 
 
@@ -466,7 +467,6 @@ execute pathogen#infect()
         "               section commands " These will be folded
         "               " }}}
 " }}}
-
 set modelines=1                             " Set vim to only use these settings for THIS file
 " THIS NEXT LINE MUST BE AT THE BOTTOM OF THE FILE, AND LEFT COMMENTED OUT!!!!!!!!!!!!
 " vim:foldmethod=marker:foldlevel=0
