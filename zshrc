@@ -79,7 +79,10 @@ plugins=(
     tmux
 )
 
+
+# Import ohmyzsh and quick containers
 source $ZSH/oh-my-zsh.sh
+source ~/.dotfiles/containers/main.bash
 
 # User configuration
 

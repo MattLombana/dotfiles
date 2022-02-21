@@ -32,8 +32,8 @@ shopt -s checkwinsize
 # history -r - read global history into current session
 # Each of these comes from lesmana's answer on stack exchange:
 # https://unix.stackexchange.com/questions/1288/preserve-bash-history-in-multiple-terminal-windows
-#export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+#export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
@@ -176,30 +176,30 @@ fi
     #fi
 #fi
 
-trap '' 2
-if [[ -z "$TMUX" ]]; then
-    SESSIONS="$(tmux ls | cut -d ':' -f 1)"
-    echo $SESSIONS
-    if [[ -z "$SESSIONS" ]]; then
-        TMUXCOMMAND="tmux"
-    else
-        echo "Which session would you like to attach to? (Enter a new name, or press enter for a new session)"
-        read -r ID
-        if [[ -z "$ID" ]]; then
-            #exec tmux
-            TMUXCOMMAND="tmux"
-        elif ! [[ "$SESSIONS" == *"$ID"* ]]; then
-            #exec tmux new-session -s "$ID"
-            tmux new-session -s "$ID"
-            TMUXCOMMAND="tmux new-session -s $ID"
-        else
-            #exec tmux attach-session -t "$ID"
-            TMUXCOMMAND="tmux attach-session -t $ID"
-        fi
-    fi
-    exec $TMUXCOMMAND
-fi
-trap 2
+#trap '' 2
+#if [[ -z "$TMUX" ]]; then
+#    SESSIONS="$(tmux ls | cut -d ':' -f 1)"
+#    echo $SESSIONS
+#    if [[ -z "$SESSIONS" ]]; then
+#        TMUXCOMMAND="tmux"
+#    else
+#        echo "Which session would you like to attach to? (Enter a new name, or press enter for a new session)"
+#        read -r ID
+#        if [[ -z "$ID" ]]; then
+#            #exec tmux
+#            TMUXCOMMAND="tmux"
+#        elif ! [[ "$SESSIONS" == *"$ID"* ]]; then
+#            #exec tmux new-session -s "$ID"
+#            tmux new-session -s "$ID"
+#            TMUXCOMMAND="tmux new-session -s $ID"
+#        else
+#            #exec tmux attach-session -t "$ID"
+#            TMUXCOMMAND="tmux attach-session -t $ID"
+#        fi
+#    fi
+#    exec $TMUXCOMMAND
+#fi
+#trap 2
 
 
 function get-logging-status() {
@@ -266,3 +266,5 @@ complete -W "$(teamocil --list)" teamocil
 
 # Failsafe for moving files (prevent accidental overwritting)
 alias mv="mv -i"
+
+complete -C /usr/bin/terraform terraform
