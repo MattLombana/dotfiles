@@ -3,5 +3,5 @@ build-nmap() {
 }
 
 nmap() {
-docker run --rm -it --net=host --name nmap --privileged nmap:latest "$@"
+docker run --rm -it --net=host --name nmap --privileged -v ~/Documents:/host nmap:latest "$@"
 }

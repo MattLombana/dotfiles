@@ -3,5 +3,5 @@ build-template() {
 }
 
 template() {
-docker run --rm -it --net=host --name template --privileged template:latest "$@"
+    docker run --rm -it --net=host --name template --privileged -v ~/Documents:/host template:latest "$@"
 }
