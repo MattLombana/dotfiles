@@ -277,6 +277,8 @@ if [[ -z "$TMUX" ]]; then
         elif [[ "exit" == *"$ID"* ]]; then
             trap 2
             exit
+        elif [[ "none" == *"$ID"* ]]; then
+            :
         elif ! [[ "$SESSIONS" == *"$ID"* ]]; then
             tmux new-session -s "$ID"
         else

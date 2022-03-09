@@ -23,6 +23,7 @@ alias lslah='ls -alh'
 # Vim File Aliases
 alias tfoo='vim /tmp/foo'
 alias tbar='vim /tmp/bar'
+alias tfooc='vim /tmp/foo && cat /tmp/foo | pbcopy'
 
 # Get rid of the awful BSD nc
 alias nc='netcat'
