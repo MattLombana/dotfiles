@@ -73,7 +73,6 @@ plugins=(
     copyfile
     docker
     extract
-    macos
     pip
     python
     tmux
