@@ -355,6 +355,11 @@ python3-docker() {
     docker run --rm -it -v "$(pwd):/host" -w /host python:3 /bin/bash
 }
 
+
+golang() {
+    docker run --rm -it -v "$(pwd):/host" -w /host golang:latest /bin/bash
+}
+
 docker-pwd() {
     docker run --rm -it -v "$(pwd):/host" -w /host "$@"
 }
