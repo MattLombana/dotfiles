@@ -33,7 +33,7 @@ CASE_SENSITIVE="true"
 # export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
+DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -376,6 +376,10 @@ docker-remove-exited() {
     docker rm $(docker ps -a -f status=exited -q)
 }
 
+terraform() {
+	docker run -it --name terraform --rm -v /Users/mlombana/.config/gcloud:/root/.config/gcloud -v "$(pwd):/host" -w /host hashicorp/terraform:latest "$@"
+}
+
 realpath() {
     OURPWD=$PWD
     cd "$(dirname "$1")"
@@ -420,3 +424,30 @@ bindkey \^U backward-kill-line  # Stop deleting the whole line with Ctrl-U
 # ZSH Tmux plugin settings
 ZSH_TMUX_AUTOCONNECT=false
 DISABLE_AUTO_TITLE=true
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/opt/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/opt/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/google-cloud-sdk/completion.zsh.inc'; fi
+
+function gssh() {
+        gcloud beta compute ssh $1 --tunnel-through-iap # --ssh-flag "-L 50050:127.0.0.1:50050"
+}
+
+function gscp() {
+        gcloud beta compute scp $1 $2 --tunnel-through-iap
+}
+
+function gfwd() {
+    gcloud compute start-iap-tunnel $1 $2 --local-host-port localhost:$2
+}
+
+
+
+# gssh example-servername
+# gscp file example-servername:/tmp/
+# gscp example-servername:/tmp/file ./
+# gfwd example-server 1234
+
+
