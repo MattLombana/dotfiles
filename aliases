@@ -36,3 +36,7 @@ alias teamocil='teamocil --here'
 alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 alias getip='ifconfig | grep inet'
+
+# Reset mouse reporting after SSH ends abruptly
+# https://superuser.com/questions/802698/disable-mouse-reporting-in-a-terminal-session-after-tmux-exits-unexpectedly
+alias resetmouse='printf '"'"'\e[?1000l'"'"
