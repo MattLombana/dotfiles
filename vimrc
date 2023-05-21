@@ -136,7 +136,7 @@ let g:loaded_vimballPlugin=1
 " Flake8 Linter
 " {{{
     " Lint any .py file on write
-    autocmd BufWritePost *.py call Flake8()
+    "autocmd BufWritePost *.py call Flake8()
 " }}}
 
 
